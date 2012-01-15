@@ -1,0 +1,13 @@
+<project>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>com.repaskysoft</groupId>
+   <artifactId>url-shortener</artifactId>
+   <version>0.0.1</version>
+   <dependencies>
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>4.10</version>
+      </dependency>
+   </dependencies>
+</project>
