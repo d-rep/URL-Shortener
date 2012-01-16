@@ -32,13 +32,4 @@
          </dependency>
       </dependencies>
    </dependencyManagement>
-   <!--
-   <pluginManagement>
-      <plugin>
-         <groupId>org.mortbay.jetty</groupId>
-         <artifactId>maven-jetty-plugin</artifactId>
-         <version>6.1.26</version>
-      </plugin>
-   </pluginManagement>
-   -->
 </project>

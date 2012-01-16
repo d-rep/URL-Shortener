@@ -5,10 +5,10 @@
 
 <struts>
    <package name="urls" namespace="/" extends="struts-default">
-      <action name="SaveUrlForm">
+      <action name="">
          <result>addUrl.jsp</result>
       </action>
-      <action name="SaveUrl" class="UrlShortenerAction">
+      <action name="add" class="UrlShortenerAction">
          <result name="SUCCESS">success.jsp</result>
       </action>
    </package>

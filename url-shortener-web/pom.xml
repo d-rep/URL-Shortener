@@ -12,13 +12,13 @@
    <artifactId>url-shortener-web</artifactId>
    <packaging>war</packaging>
    <build>
-   <plugins>
-      <plugin>
-         <groupId>org.mortbay.jetty</groupId>
-         <artifactId>maven-jetty-plugin</artifactId>
-         <version>6.1.26</version>
-      </plugin>
-   </plugins>
+      <plugins>
+         <plugin>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>maven-jetty-plugin</artifactId>
+            <version>6.1.26</version>
+         </plugin>
+      </plugins>
    </build>
    <dependencies>
       <dependency>
