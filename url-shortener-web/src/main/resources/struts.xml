@@ -4,6 +4,7 @@
    "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+   <constant name="struts.action.extension" value=""/>
    <package name="urls" namespace="/" extends="struts-default">
       <action name="">
          <result>addUrl.jsp</result>
