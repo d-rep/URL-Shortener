@@ -11,6 +11,9 @@
       <module>../url-shortener-domain</module>
       <module>../url-shortener-web</module>
    </modules>
+   <properties>
+      <org.springframework.version>3.1.0.RELEASE</org.springframework.version>
+   </properties>
    <dependencyManagement>
       <dependencies>
          <dependency>
@@ -18,6 +21,11 @@
             <artifactId>url-shortener-domain</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
+         </dependency>
+         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${org.springframework.version}</version>
          </dependency>
          <dependency>
             <groupId>junit</groupId>
@@ -29,6 +37,12 @@
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
             <version>2.3.1.1</version>
+         </dependency>
+         <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-spring-plugin</artifactId>
+            <version>2.3.1.1</version>
+            <scope>runtime</scope>
          </dependency>
       </dependencies>
    </dependencyManagement>

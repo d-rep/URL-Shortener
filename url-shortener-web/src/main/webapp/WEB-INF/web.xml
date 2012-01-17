@@ -7,6 +7,10 @@
 <webapp>
    <display-name>URL Shortener</display-name>
 
+   <listener>
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+   </listener>
+
    <filter>
       <filter-name>struts2</filter-name>
       <filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>

@@ -26,12 +26,20 @@
          <artifactId>url-shortener-domain</artifactId>
       </dependency>
       <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-web</artifactId>
+      </dependency>
+      <dependency>
          <groupId>junit</groupId>
          <artifactId>junit</artifactId>
       </dependency>
       <dependency>
          <groupId>org.apache.struts</groupId>
          <artifactId>struts2-core</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.struts</groupId>
+         <artifactId>struts2-spring-plugin</artifactId>
       </dependency>
    </dependencies>
 </project>
