@@ -7,6 +7,14 @@
 <webapp>
    <display-name>URL Shortener</display-name>
 
+   <context-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>
+         /WEB-INF/applicationContext.xml,
+         classpath:spring-aspects.xml
+      </param-value>
+   </context-param>
+
    <listener>
       <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
    </listener>

@@ -5,7 +5,12 @@
             http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-   <bean id="urlShortenerService" class="UrlShortenerServiceImpl"/>
+   <bean id="urlShortenerServiceImpl" class="UrlShortenerServiceImpl"/>
+
+   <bean id="urlShortenerService" class="org.springframework.aop.framework.ProxyFactoryBean">
+      <property name="proxyInterfaces" value="UrlShortenerService"/>
+      <property name="target" ref="urlShortenerServiceImpl"/>
+   </bean>
 
    <bean id="urlShortenerAction" class="UrlShortenerAction">
       <property name="urlShortenerService" ref="urlShortenerService"/>

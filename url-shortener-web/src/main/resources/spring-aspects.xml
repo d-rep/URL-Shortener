@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--
+        Performance Monitoring with AOP - trap any methods that you want to
+        time. The classes being watched need a ProxyFactoryBean defined.
+    -->
+    <bean id="timingLogger"
+        class="org.springframework.aop.interceptor.PerformanceMonitorInterceptor">
+        <!--  Setting this argument to true uses a dynamic logger -->
+        <constructor-arg type="boolean" value="true" />
+    </bean>
+
+    <bean name="methodTraceLogger"
+        class="org.springframework.aop.interceptor.SimpleTraceInterceptor">
+        <!--  Setting this argument to true uses a dynamic logger -->
+        <constructor-arg type="boolean" value="true" />
+    </bean>
+
+    <aop:config>
+        <aop:advisor
+            pointcut="execution(* UrlShortenerServiceImpl..*(..))"
+            advice-ref="methodTraceLogger" />
+        <aop:advisor
+            pointcut="execution(* UrlShortenerServiceImpl..*(..))"
+            advice-ref="timingLogger" />
+    </aop:config>
+</beans>
