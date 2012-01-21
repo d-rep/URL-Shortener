@@ -41,5 +41,13 @@
          <groupId>org.apache.struts</groupId>
          <artifactId>struts2-spring-plugin</artifactId>
       </dependency>
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-log4j12</artifactId>
+      </dependency>
    </dependencies>
 </project>
