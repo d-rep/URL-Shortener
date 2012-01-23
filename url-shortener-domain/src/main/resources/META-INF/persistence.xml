@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+   <persistence-unit name="jpa.url">
+      <properties>
+         <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+         <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+         <property name="hibernate.connection.username" value="drew"/>
+         <property name="hibernate.conenction.password" value="daffodil"/>
+         <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/url_test"/>
+         <property name="show_sql" value="true"/>
+         <mapping class="ShortUrl"/>
+      </properties>
+   </persistence-unit>
+
+</persistence>

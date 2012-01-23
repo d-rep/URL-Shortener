@@ -1,3 +1,5 @@
+import domain.ShortUrl;
+
 public class UrlShortenerAction {
    private UrlShortenerService urlShortenerService;
    private ShortUrl shortUrl;

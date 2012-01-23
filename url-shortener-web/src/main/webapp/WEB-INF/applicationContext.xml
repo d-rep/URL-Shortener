@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-            http://www.springframework.org/schema/beans
-            http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
    <bean id="urlShortenerServiceImpl" class="UrlShortenerServiceImpl"/>
 
@@ -15,5 +15,10 @@
    <bean id="urlShortenerAction" class="UrlShortenerAction">
       <property name="urlShortenerService" ref="urlShortenerService"/>
    </bean>
+
+   <!--  tell spring to use annotation based congfigurations -->
+   <context:annotation-config />
+   <!--  tell spring where to find the beans -->
+   <context:component-scan base-package="zz.yy.abcd" />
 
 </beans>
