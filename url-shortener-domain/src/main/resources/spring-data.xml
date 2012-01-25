@@ -19,7 +19,7 @@
        <property name="password" value="${jdbc.password}"/>
    </bean>
 
-   <context:property-placeholder location="classpath:jdbc.properties"/>
+   <context:property-placeholder location="classpath:dev.properties"/>
 
    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
       <property name="entityManagerFactory" ref="entityManagerFactory"/>

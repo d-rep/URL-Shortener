@@ -12,6 +12,7 @@
       <module>../url-shortener-web</module>
    </modules>
    <properties>
+      <jdk.version>1.6</jdk.version>
       <spring.version>3.1.0.RELEASE</spring.version>
       <hibernate.version>4.0.1.Final</hibernate.version>
    </properties>
@@ -106,4 +107,19 @@
          </dependency>
       </dependencies>
    </dependencyManagement>
+   <build>
+      <pluginManagement>
+         <plugins>
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-compiler-plugin</artifactId>
+               <version>2.3.2</version>
+               <configuration>
+                  <source>${jdk.version}</source>
+                  <target>${jdk.version}</target>
+               </configuration>
+            </plugin>
+         </plugins>
+      </pluginManagement>
+   </build>
 </project>
