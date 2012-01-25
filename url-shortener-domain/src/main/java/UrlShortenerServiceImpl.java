@@ -1,6 +1,7 @@
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.lang.Iterable;
 
 import domain.ShortUrl;
 import repositories.UrlRepository;
@@ -13,9 +14,12 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
    private UrlRepository urlRepository;
 
    public boolean saveUrl(ShortUrl shortUrl) {
-      logger.error("I still haven't been implemented yet!");
+      // FIXME handle exceptions
       urlRepository.save(shortUrl);
-      logger.error("AFTER SAVE");
       return true;
+   }
+
+   public Iterable<ShortUrl> findAll() {
+      return urlRepository.findAll();
    }
 }

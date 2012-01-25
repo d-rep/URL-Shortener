@@ -10,8 +10,14 @@
       <action name="">
          <result>addUrl.jsp</result>
       </action>
+
       <action name="add" class="urlShortenerAction">
          <result name="SUCCESS">success.jsp</result>
       </action>
+
+      <action name="admin" class="urlShortenerAdminAction">
+         <result name="INPUT">admin.jsp</result>
+      </action>
+
    </package>
 </struts>
