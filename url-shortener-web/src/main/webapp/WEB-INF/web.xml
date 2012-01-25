@@ -11,6 +11,7 @@
       <param-name>contextConfigLocation</param-name>
       <param-value>
          /WEB-INF/applicationContext.xml,
+         classpath:spring-dataSource.xml,
          classpath:spring-data.xml,
          classpath:spring-aspects.xml
       </param-value>
