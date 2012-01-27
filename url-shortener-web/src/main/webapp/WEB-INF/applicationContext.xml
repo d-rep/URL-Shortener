@@ -22,6 +22,10 @@
       <property name="urlShortenerService" ref="urlShortenerService"/>
    </bean>
 
+   <bean id="urlExpandAction" class="UrlExpandAction">
+      <property name="urlShortenerService" ref="urlShortenerService"/>
+   </bean>
+
    <!--  tell spring to use annotation based congfigurations -->
    <context:annotation-config />
    <!--  tell spring where to find the beans -->

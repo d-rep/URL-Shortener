@@ -7,6 +7,8 @@
    <constant name="struts.action.extension" value=""/>
    <constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory"/>
    <package name="urls" namespace="/" extends="struts-default">
+      <default-action-ref name="urlExpand"/>
+
       <action name="">
          <result>addUrl.jsp</result>
       </action>
@@ -17,6 +19,10 @@
 
       <action name="admin" class="urlShortenerAdminAction">
          <result name="INPUT">admin.jsp</result>
+      </action>
+
+      <action name="urlExpand" class="urlExpandAction">
+         <result name="SUCCESS">urlExpand.jsp</result>
       </action>
 
    </package>

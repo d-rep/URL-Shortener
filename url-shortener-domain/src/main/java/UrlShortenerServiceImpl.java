@@ -22,4 +22,10 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
    public Iterable<ShortUrl> findAll() {
       return urlRepository.findAll();
    }
+
+   public String expandShortUrl(String code) {
+      ShortUrl shortUrl = urlRepository.findByShortUrl(code);
+      return shortUrl.getFullUrl();
+   }
+
 }
