@@ -22,7 +22,7 @@
       </action>
 
       <action name="urlExpand" class="urlExpandAction">
-         <result name="SUCCESS">urlExpand.jsp</result>
+         <result name="SUCCESS" type="redirect">${fullUrl}</result>
       </action>
 
    </package>
