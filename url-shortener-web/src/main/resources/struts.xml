@@ -23,6 +23,7 @@
 
       <action name="urlExpand" class="urlExpandAction">
          <result name="SUCCESS" type="redirect">${fullUrl}</result>
+         <result name="ERROR">badShortUrl.jsp</result>
       </action>
 
    </package>

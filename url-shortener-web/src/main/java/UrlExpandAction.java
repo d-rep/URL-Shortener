@@ -25,7 +25,7 @@ public class UrlExpandAction {
    /**
     * This class must be aware of its Action Name, since we lookup the full URL using that shortened code.
     */
-	private String getActionName() {
+	public String getActionName() {
 		return ServletActionContext.getActionMapping().getName();
 	}
 
@@ -33,6 +33,10 @@ public class UrlExpandAction {
       String shortUrl = this.getActionName();
       logger.debug("My action name (the shortened URL) is: " + shortUrl);
       this.fullUrl = urlShortenerService.expandShortUrl(shortUrl);
-      return "SUCCESS";
+      if(this.fullUrl != null && this.fullUrl.length() > 0) {
+         return "SUCCESS";
+      } else {
+         return "ERROR";
+      }
    }
 }
