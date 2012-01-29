@@ -39,5 +39,17 @@ public class ShortenerCodecTest {
       }
    }
 
+   @Test
+   public void testEncodeTwoUpperCase() {
+      assertEquals("expected AA", "AA", shortenerCodec.encode(53));
+      assertEquals("AB", shortenerCodec.encode(54));
+      assertEquals("AC", shortenerCodec.encode(55));
+      assertEquals("Az", shortenerCodec.encode(104));
+      assertEquals("BA", shortenerCodec.encode(105));
+      assertEquals("BC", shortenerCodec.encode(107));
+      assertEquals("Cz", shortenerCodec.encode(208));
+      assertEquals("DA", shortenerCodec.encode(209));
+      assertEquals("SL", shortenerCodec.encode(1000));
+   }
 
 }
