@@ -1,6 +1,12 @@
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.apache.struts2.ServletActionContext;
+
 import domain.ShortUrl;
 
 public class UrlExpandAction {
+   private static final Logger logger = LoggerFactory.getLogger(UrlExpandAction.class);
+
    private UrlShortenerService urlShortenerService;
    private String fullUrl;
 
@@ -16,9 +22,16 @@ public class UrlExpandAction {
       this.fullUrl = fullUrl;
    }
 
+   /**
+    * This class must be aware of its Action Name, since we lookup the full URL using that shortened code.
+    */
+	private String getActionName() {
+		return ServletActionContext.getActionMapping().getName();
+	}
+
    public String execute() {
-      // FIXME hardcoded this for now
-      String shortUrl = "search";
+      String shortUrl = this.getActionName();
+      logger.debug("My action name (the shortened URL) is: " + shortUrl);
       this.fullUrl = urlShortenerService.expandShortUrl(shortUrl);
       return "SUCCESS";
    }
