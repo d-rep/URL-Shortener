@@ -6,6 +6,6 @@
    </head>
    <body>
       <h1>Shortened URL Not Found</h1>
-      Could not locate a URL from the shortened code "<s:property value="actionName"/>"
+      Could not locate a URL from the shortened code "<s:property value="shortUrl"/>"
    </body>
 </html>
