@@ -15,6 +15,7 @@
 
       <action name="add" class="urlShortenerAction">
          <result name="SUCCESS">success.jsp</result>
+         <result name="ERROR">saveFailed.jsp</result>
       </action>
 
       <action name="admin" class="urlShortenerAdminAction">
