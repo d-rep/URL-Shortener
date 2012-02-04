@@ -38,6 +38,12 @@ public class ShortUrlTest {
    }
 
    @Test
+   public void testFullUrlHttpPrefix() {
+      shortUrl.setFullUrl("www.google.com");
+      assertEquals("http://www.google.com", shortUrl.getFullUrl());
+   }
+
+   @Test
    public void testValidShortUrl() {
       shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("http://www.google.com");

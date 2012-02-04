@@ -10,6 +10,8 @@ import java.io.Serializable;
 
 @Entity
 public class ShortUrl implements Serializable {
+   private static final String HTTP_PREFIX = "http://";
+
    @Id
    @GeneratedValue(strategy = AUTO)
    private Long id;
@@ -23,7 +25,11 @@ public class ShortUrl implements Serializable {
    private String shortUrl;
 
    public String getFullUrl() {
-      return this.fullUrl;
+      String full = this.fullUrl;
+      if(! full.startsWith(HTTP_PREFIX)) {
+         full = HTTP_PREFIX + full;
+      }
+      return full;
    }
 
    public void setFullUrl(String fullUrl) {
