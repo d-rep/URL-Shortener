@@ -23,10 +23,10 @@
 
     <aop:config>
         <aop:advisor
-            pointcut="execution(* UrlShortenerServiceImpl..*(..))"
+            pointcut="execution(* com.repaskys.UrlShortenerServiceImpl..*(..))"
             advice-ref="methodTraceLogger" />
         <aop:advisor
-            pointcut="execution(* UrlShortenerServiceImpl..*(..))"
+            pointcut="execution(* com.repaskys.UrlShortenerServiceImpl..*(..))"
             advice-ref="timingLogger" />
     </aop:config>
 </beans>

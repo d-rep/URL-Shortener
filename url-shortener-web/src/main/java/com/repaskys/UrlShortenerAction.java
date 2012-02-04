@@ -1,8 +1,10 @@
+package com.repaskys;
+
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import domain.ShortUrl;
+import com.repaskys.domain.ShortUrl;
 
 public class UrlShortenerAction {
    private static final Logger logger = LoggerFactory.getLogger(UrlShortenerAction.class);

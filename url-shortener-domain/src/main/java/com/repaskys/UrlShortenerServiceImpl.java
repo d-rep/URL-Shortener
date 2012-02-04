@@ -1,3 +1,5 @@
+package com.repaskys;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,8 @@ import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
 import javax.validation.Validator;
 
-import domain.ShortUrl;
-import repositories.UrlRepository;
+import com.repaskys.domain.ShortUrl;
+import com.repaskys.repositories.UrlRepository;
 
 public class UrlShortenerServiceImpl implements UrlShortenerService {
 

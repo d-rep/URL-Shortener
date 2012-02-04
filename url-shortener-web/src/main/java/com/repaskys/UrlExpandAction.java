@@ -1,9 +1,11 @@
+package com.repaskys;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.Preparable;
 
-import domain.ShortUrl;
+import com.repaskys.domain.ShortUrl;
 
 public class UrlExpandAction implements Preparable {
    private static final Logger logger = LoggerFactory.getLogger(UrlExpandAction.class);
@@ -15,9 +17,9 @@ public class UrlExpandAction implements Preparable {
    /**
     * This class must be aware of its Action Name, since we lookup the full URL using that shortened code.
     */
-	private static String getActionName() {
-		return ServletActionContext.getActionMapping().getName();
-	}
+   private static String getActionName() {
+      return ServletActionContext.getActionMapping().getName();
+   }
 
    @Override
    public void prepare() {

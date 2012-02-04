@@ -1,7 +1,9 @@
+package com.repaskys;
+
 import java.lang.Iterable;
 import java.util.List;
 
-import domain.ShortUrl;
+import com.repaskys.domain.ShortUrl;
 
 public interface UrlShortenerService {
    /**

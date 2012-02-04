@@ -1,5 +1,7 @@
+package com.repaskys;
+
 import java.lang.Iterable;
-import domain.ShortUrl;
+import com.repaskys.domain.ShortUrl;
 
 public class UrlShortenerAdminAction {
 

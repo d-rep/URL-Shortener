@@ -9,7 +9,7 @@
           http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
    <!-- directory to scan for repository classes -->
-   <jpa:repositories base-package="repositories"/>
+   <jpa:repositories base-package="com.repaskys.repositories"/>
 
    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
       <property name="entityManagerFactory" ref="entityManagerFactory"/>

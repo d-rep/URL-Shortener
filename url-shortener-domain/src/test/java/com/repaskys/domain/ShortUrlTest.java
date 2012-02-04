@@ -1,3 +1,5 @@
+package com.repaskys.domain;
+
 import java.util.Set;
 
 import org.junit.After;
@@ -11,7 +13,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-import domain.ShortUrl;
+import com.repaskys.domain.ShortUrl;
 
 public class ShortUrlTest {
    private static Validator validator;

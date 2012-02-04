@@ -7,28 +7,29 @@
 
    <context:property-placeholder location="classpath:dev.properties"/>
 
-   <bean id="urlShortenerServiceImpl" class="UrlShortenerServiceImpl"/>
+   <bean id="urlShortenerServiceImpl" class="com.repaskys.UrlShortenerServiceImpl"/>
 
    <bean id="urlShortenerService" class="org.springframework.aop.framework.ProxyFactoryBean">
-      <property name="proxyInterfaces" value="UrlShortenerService"/>
+      <property name="proxyInterfaces" value="com.repaskys.UrlShortenerService"/>
       <property name="target" ref="urlShortenerServiceImpl"/>
    </bean>
 
-   <bean id="urlShortenerAction" class="UrlShortenerAction">
+   <bean id="urlShortenerAction" class="com.repaskys.UrlShortenerAction">
       <property name="urlShortenerService" ref="urlShortenerService"/>
    </bean>
 
-   <bean id="urlShortenerAdminAction" class="UrlShortenerAdminAction">
+   <bean id="urlShortenerAdminAction" class="com.repaskys.UrlShortenerAdminAction">
       <property name="urlShortenerService" ref="urlShortenerService"/>
    </bean>
 
-   <bean id="urlExpandAction" class="UrlExpandAction">
+   <bean id="urlExpandAction" class="com.repaskys.UrlExpandAction">
       <property name="urlShortenerService" ref="urlShortenerService"/>
    </bean>
 
    <!--  tell spring to use annotation based congfigurations -->
    <context:annotation-config />
+
    <!--  tell spring where to find the beans -->
-   <context:component-scan base-package="zz.yy.abcd" />
+   <context:component-scan base-package="com.repaskys"/>
 
 </beans>
