@@ -4,7 +4,7 @@
                              http://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <parent>
-      <groupId>com.repaskysoft</groupId>
+      <groupId>com.repaskys</groupId>
       <artifactId>url-shortener-build</artifactId>
       <version>0.0.1</version>
       <relativePath>../url-shortener-build</relativePath>
