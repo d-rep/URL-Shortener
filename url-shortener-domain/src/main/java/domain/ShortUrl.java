@@ -14,11 +14,12 @@ public class ShortUrl implements Serializable {
    @GeneratedValue(strategy = AUTO)
    private Long id;
 
-   @NotNull
+   @NotNull(message = "Full URL {javax.validation.constraints.NotNull.message}")
+   @Size(min = 1, max = 500, message="Full URL {javax.validation.constraints.Size.message}")
    private String fullUrl;
 
-   @NotNull
-   @Size(min = 2, max = 14)
+   @NotNull(message = "Short URL {javax.validation.constraints.NotNull.message}")
+   @Size(min = 1, max = 20, message="Short URL {javax.validation.constraints.Size.message}")
    private String shortUrl;
 
    public String getFullUrl() {
