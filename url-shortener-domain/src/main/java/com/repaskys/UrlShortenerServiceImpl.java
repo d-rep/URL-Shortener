@@ -3,6 +3,8 @@ package com.repaskys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+
 import java.lang.Iterable;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +41,16 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
       return violations;
    }
 
-   public boolean saveUrl(ShortUrl shortUrl) {
-      // FIXME handle exceptions
-      ShortUrl savedShortUrl = urlRepository.save(shortUrl);
-      return true;
+   public String saveUrl(ShortUrl shortUrl) {
+      String errorMessage = "";
+      ShortUrl savedShortUrl = null;
+      try {
+         savedShortUrl = urlRepository.save(shortUrl);
+      } catch(DataAccessException ex) {
+         logger.error("DataAccessException when saving ShortUrl", ex);
+         errorMessage = ex.getMessage();
+      }
+      return errorMessage;
    }
 
    public Iterable<ShortUrl> findAll() {

@@ -10,7 +10,11 @@ public interface UrlShortenerService {
     * Validate the ShortURL and return a list of violations.
     */
    List<String> validateShortUrl(ShortUrl shortUrl);
-   boolean saveUrl(ShortUrl shortUrl);
+
+   /**
+    * Save the ShortURL and return an error string.  Returns a blank string if the save was successful.
+    */
+   String saveUrl(ShortUrl shortUrl);
    Iterable<ShortUrl> findAll();
    String expandShortUrl(String shortUrl);
 }
