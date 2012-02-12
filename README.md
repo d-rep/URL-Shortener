@@ -40,7 +40,7 @@ It uses JPA 2.0 for data persistence, with help from the [Spring Data JPA] proje
 
 Application Server
 ------------------
-This assumes you will be deploying to a simple servlet container like [Apache Tomcat], so implementation libraries are included by default.
+This application uses JavaEE 6 API's, but it assumes you will be deploying to a simple servlet container like [Apache Tomcat], so implementation libraries are included by default.
 
 **The default configuration will build a WAR file that is _not_ appropriate for a full-fledged JavaEE 6 server!**  For instance, if you are using IBM Websphere 8, then the Java Persistence API 2.0 (JSR 317) and the Bean Validation API (JSR 303) dependencies will already be provided, so you don't need Maven to include those in the WAR.
 
