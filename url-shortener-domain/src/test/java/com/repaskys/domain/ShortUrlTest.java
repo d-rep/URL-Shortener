@@ -17,6 +17,7 @@ package com.repaskys.domain;
 
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Before;
@@ -78,7 +79,7 @@ public class ShortUrlTest {
       constraintViolations = validator.validate(shortUrl);
       assertEquals(1, constraintViolations.size());
       violation = constraintViolations.iterator().next();
-      assertEquals("Full URL is required", violation.getMessage());
+      assertEquals("Full URL cannot be blank", violation.getMessage());
       assertEquals("fullUrl", violation.getPropertyPath().toString());
    }
 
@@ -88,7 +89,7 @@ public class ShortUrlTest {
       constraintViolations = validator.validate(shortUrl);
       assertEquals(1, constraintViolations.size());
       violation = constraintViolations.iterator().next();
-      assertEquals("Short URL is required", violation.getMessage());
+      assertEquals("Short URL cannot be blank", violation.getMessage());
       assertEquals("shortUrl", violation.getPropertyPath().toString());
    }
 
@@ -99,7 +100,7 @@ public class ShortUrlTest {
       constraintViolations = validator.validate(shortUrl);
       assertEquals(1, constraintViolations.size());
       violation = constraintViolations.iterator().next();
-      assertEquals("Full URL cannot be blank and must be less than 500 characters long", violation.getMessage());
+      assertEquals("Full URL cannot be blank", violation.getMessage());
       assertEquals("fullUrl", violation.getPropertyPath().toString());
    }
 
@@ -110,7 +111,51 @@ public class ShortUrlTest {
       constraintViolations = validator.validate(shortUrl);
       assertEquals(1, constraintViolations.size());
       violation = constraintViolations.iterator().next();
-      assertEquals("Short URL cannot be blank and must be less than 20 characters long", violation.getMessage());
+      assertEquals("Short URL cannot be blank", violation.getMessage());
+      assertEquals("shortUrl", violation.getPropertyPath().toString());
+   }
+
+   @Test
+   public void fullUrlCannotBeOnlySpaces() {
+      shortUrl.setShortUrl("abcdef");
+      shortUrl.setFullUrl(" ");
+      constraintViolations = validator.validate(shortUrl);
+      assertEquals(1, constraintViolations.size());
+      violation = constraintViolations.iterator().next();
+      assertEquals("Full URL cannot be blank", violation.getMessage());
+      assertEquals("fullUrl", violation.getPropertyPath().toString());
+   }
+
+   @Test
+   public void shortUrlCannotOnlySpaces() {
+      shortUrl.setShortUrl(" ");
+      shortUrl.setFullUrl("google.com");
+      constraintViolations = validator.validate(shortUrl);
+      assertEquals(1, constraintViolations.size());
+      violation = constraintViolations.iterator().next();
+      assertEquals("Short URL cannot be blank", violation.getMessage());
+      assertEquals("shortUrl", violation.getPropertyPath().toString());
+   }
+
+   @Test
+   public void fullUrlTooLong() {
+      shortUrl.setShortUrl("abcdef");
+      shortUrl.setFullUrl(StringUtils.repeat("B", 501));
+      constraintViolations = validator.validate(shortUrl);
+      assertEquals(1, constraintViolations.size());
+      violation = constraintViolations.iterator().next();
+      assertEquals("Full URL must be less than 500 characters long", violation.getMessage());
+      assertEquals("fullUrl", violation.getPropertyPath().toString());
+   }
+
+   @Test
+   public void shortUrlCannotTooLong() {
+      shortUrl.setShortUrl(StringUtils.repeat("A", 21));
+      shortUrl.setFullUrl("google.com");
+      constraintViolations = validator.validate(shortUrl);
+      assertEquals(1, constraintViolations.size());
+      violation = constraintViolations.iterator().next();
+      assertEquals("Short URL must be less than 20 characters long", violation.getMessage());
       assertEquals("shortUrl", violation.getPropertyPath().toString());
    }
 

@@ -21,7 +21,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import static javax.persistence.GenerationType.AUTO;
-import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
@@ -40,12 +40,12 @@ public class ShortUrl implements Serializable {
    @GeneratedValue(strategy = AUTO)
    private Long id;
 
-   @NotNull(message = "Full URL {javax.validation.constraints.NotNull.message}")
-   @Size(min = 1, max = 500, message="Full URL {javax.validation.constraints.Size.message}")
+   @NotBlank(message = "Full URL {javax.validation.constraints.NotBlank.message}")
+   @Size(max = 500, message="Full URL {javax.validation.constraints.Size.message}")
    private String fullUrl;
 
-   @NotNull(message = "Short URL {javax.validation.constraints.NotNull.message}")
-   @Size(min = 1, max = 20, message="Short URL {javax.validation.constraints.Size.message}")
+   @NotBlank(message = "Short URL {javax.validation.constraints.NotBlank.message}")
+   @Size(max = 20, message="Short URL {javax.validation.constraints.Size.message}")
    private String shortUrl;
 
    public Long getId() {

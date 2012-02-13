@@ -61,11 +61,11 @@
             <artifactId>validation-api</artifactId>
             <version>1.0.0.GA</version>
          </dependency>
+         <!-- ideally this would be runtime scope, but the custom Hibernate validations @NotBlank and @URL are used -->
          <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>4.2.0.Final</version>
-            <scope>runtime</scope>
          </dependency>
          <dependency>
             <groupId>org.springframework.data</groupId>
