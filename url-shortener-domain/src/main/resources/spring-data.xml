@@ -28,4 +28,7 @@
       <property name="dataSource" ref="dataSource"/>
    </bean>
 
+   <!-- Could also use javax.validation.Validation.buildDefaultValidatorFactory() but I'm not sure what the difference is. -->
+   <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+
 </beans>

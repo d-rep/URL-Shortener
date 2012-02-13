@@ -43,12 +43,8 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
    @Autowired
    private UrlRepository urlRepository;
 
-   private static Validator validator;
-
-   static {
-      ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
-      validator = validatorFactory.getValidator();
-   }
+   @Autowired
+   private Validator validator;
 
    public List<String> validateShortUrl(ShortUrl shortUrl) {
       List<String> violations = new ArrayList<String>();
