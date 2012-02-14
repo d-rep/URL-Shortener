@@ -22,6 +22,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import static javax.persistence.GenerationType.AUTO;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
@@ -42,6 +43,7 @@ public class ShortUrl implements Serializable {
 
    @NotBlank(message = "Full URL {javax.validation.constraints.NotBlank.message}")
    @Size(max = 500, message="Full URL {javax.validation.constraints.Size.message}")
+   @URL
    private String fullUrl;
 
    @NotBlank(message = "Short URL {javax.validation.constraints.NotBlank.message}")
@@ -53,11 +55,7 @@ public class ShortUrl implements Serializable {
    }
 
    public String getFullUrl() {
-      String full = this.fullUrl;
-      if(! full.startsWith(HTTP_PREFIX)) {
-         full = HTTP_PREFIX + full;
-      }
-      return full;
+      return this.fullUrl;
    }
 
    public void setFullUrl(String fullUrl) {

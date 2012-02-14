@@ -44,7 +44,7 @@ This application uses JavaEE 6 API's, but it assumes you will be deploying to a 
 
 **The default configuration will build a WAR file that is _not_ appropriate for a full-fledged JavaEE 6 server!**  For instance, if you are using IBM Websphere 8, then the Java Persistence API 2.0 (JSR 317) and the Bean Validation API (JSR 303) dependencies will already be provided, so you don't need Maven to include those in the WAR.
 
-Just edit this file -- `url-shortener-build/pom.xml` -- and change the <scope/> of hibernate-entitymanager and hibernate-validator from "runtime" to "provided".  (Note: this is untested.)
+Just edit this file -- `url-shortener-build/pom.xml` -- and change the <scope/> of hibernate-entitymanager from "runtime" to "provided".  Note: this is untested.  I made a design decision to lock in hibernate-validator as the JSR 303 implementation and use Hibernate-specific validators like @NotBlank and @URL, so code changes will be required if that's not your provider.
 
 You should also configure in a JNDI datasource and rip out the Apache DBCP (database connection pooling) configuration from this file: `url-shortener-domain/src/main/resources/spring-dataSource.xml`
 
@@ -53,7 +53,7 @@ You should also configure in a JNDI datasource and rip out the Apache DBCP (data
 [Drew Repasky]: http://twitter.com/drewrepasky
 [Apache License, Version 2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
 [Apache Tomcat]: http://tomcat.apache.org/
-[JSR 303]: http://en.wikipedia.org/wiki/JSR_303
+[JSR 303]: http://beanvalidation.org/1.0/spec/
 [Spring Data JPA]: http://www.springsource.org/spring-data/jpa
 [GitHub]:https://github.com/d-rep/
 
