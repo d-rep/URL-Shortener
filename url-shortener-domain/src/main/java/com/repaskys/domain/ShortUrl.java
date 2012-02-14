@@ -23,6 +23,7 @@ import javax.persistence.UniqueConstraint;
 import static javax.persistence.GenerationType.AUTO;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
@@ -48,6 +49,7 @@ public class ShortUrl implements Serializable {
 
    @NotBlank(message = "Short URL {javax.validation.constraints.NotBlank.message}")
    @Size(max = 20, message="Short URL {javax.validation.constraints.Size.message}")
+   @Pattern(regexp = "[a-zA-Z]*", message="Short URL must be all letters")
    private String shortUrl;
 
    public Long getId() {
@@ -58,6 +60,9 @@ public class ShortUrl implements Serializable {
       return this.fullUrl;
    }
 
+   /**
+    * A URL such as http://www.google.com
+    */
    public void setFullUrl(String fullUrl) {
       this.fullUrl = fullUrl;
    }
@@ -66,6 +71,9 @@ public class ShortUrl implements Serializable {
       return this.shortUrl;
    }
 
+   /**
+    * Short URL must be a string of all English characters.
+    */
    public void setShortUrl(String shortUrl) {
       this.shortUrl = shortUrl;
    }

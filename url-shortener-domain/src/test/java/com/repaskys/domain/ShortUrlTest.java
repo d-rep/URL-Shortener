@@ -132,13 +132,54 @@ public class ShortUrlTest {
    }
 
    @Test
-   public void shortUrlCannotOnlySpaces() {
+   public void shortUrlCannotOnlyBeSpaces() {
+      Set<String> expectedErrors = new HashSet<String>() {{
+         add("Short URL cannot be blank");
+         add("Short URL must be all letters");
+      }};
+
       shortUrl.setShortUrl(" ");
+      shortUrl.setFullUrl("http://www.google.com");
+      constraintViolations = validator.validate(shortUrl);
+
+      Set<String> actualErrors = new HashSet<String>();
+      for(ConstraintViolation violation: constraintViolations) {
+         actualErrors.add(violation.getMessage());
+         assertEquals("shortUrl", violation.getPropertyPath().toString());
+      }
+      assertEquals(expectedErrors, actualErrors);
+   }
+
+   @Test
+   public void shortUrlNoNumbers() {
+      shortUrl.setShortUrl("blah123abc");
       shortUrl.setFullUrl("http://www.google.com");
       constraintViolations = validator.validate(shortUrl);
       assertEquals(1, constraintViolations.size());
       violation = constraintViolations.iterator().next();
-      assertEquals("Short URL cannot be blank", violation.getMessage());
+      assertEquals("Short URL must be all letters", violation.getMessage());
+      assertEquals("shortUrl", violation.getPropertyPath().toString());
+   }
+
+   @Test
+   public void shortUrlAllEnglishChars() {
+      shortUrl.setShortUrl("Niño");
+      shortUrl.setFullUrl("http://www.google.com");
+      constraintViolations = validator.validate(shortUrl);
+      assertEquals(1, constraintViolations.size());
+      violation = constraintViolations.iterator().next();
+      assertEquals("Short URL must be all letters", violation.getMessage());
+      assertEquals("shortUrl", violation.getPropertyPath().toString());
+   }
+
+   @Test
+   public void shortUrlCannotHaveSpaces() {
+      shortUrl.setShortUrl("Homer Simpson");
+      shortUrl.setFullUrl("http://www.google.com");
+      constraintViolations = validator.validate(shortUrl);
+      assertEquals(1, constraintViolations.size());
+      violation = constraintViolations.iterator().next();
+      assertEquals("Short URL must be all letters", violation.getMessage());
       assertEquals("shortUrl", violation.getPropertyPath().toString());
    }
 
@@ -154,7 +195,7 @@ public class ShortUrlTest {
    }
 
    @Test
-   public void shortUrlCannotTooLong() {
+   public void shortUrlTooLong() {
       shortUrl.setShortUrl(StringUtils.repeat("A", 21));
       shortUrl.setFullUrl("http://www.google.com");
       constraintViolations = validator.validate(shortUrl);
