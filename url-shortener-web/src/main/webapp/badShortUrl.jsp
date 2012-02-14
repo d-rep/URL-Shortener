@@ -1,7 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE HTML>
 <html>
    <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
       <title>Shortened URL Not Found</title>
    </head>
    <body>

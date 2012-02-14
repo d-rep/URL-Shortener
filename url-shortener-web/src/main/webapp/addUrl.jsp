@@ -1,8 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE HTML>
 <html>
    <head>
-      <title>Add URL</title>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+      <title>URL Shortener - Add URL</title>
    </head>
    <body>
       <h1>Add New URL</h1>
