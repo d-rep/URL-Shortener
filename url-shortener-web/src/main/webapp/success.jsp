@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML>
 <html>
    <head>
@@ -5,6 +7,7 @@
       <title>URL Successfully Added</title>
    </head>
    <body>
-      <h1>SUCCESS!</h1>
+      <h1>Success!</h1>
+      Your new URL has been created.  Test it out by <s:a href="%{shortUrl.shortUrl}">clicking here</s:a>.
    </body>
 </html>
