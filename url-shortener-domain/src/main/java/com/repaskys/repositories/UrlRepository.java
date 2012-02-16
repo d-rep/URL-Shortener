@@ -19,6 +19,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import com.repaskys.domain.ShortUrl;
 
 /**
+ * This class uses <a href="http://www.springsource.org/spring-data/jpa">Spring Data</a> to expose ShortUrl entities from JPA.
+ *
  * @author Drew Repasky
  */
 public interface UrlRepository extends PagingAndSortingRepository<ShortUrl, Long> {

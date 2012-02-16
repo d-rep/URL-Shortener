@@ -21,6 +21,8 @@ import java.util.List;
 import com.repaskys.domain.ShortUrl;
 
 /**
+ * This class is for saving and finding ShortUrl instances.  It can also be used to expand a short code into a full URL.
+ *
  * @author Drew Repasky
  */
 public interface UrlShortenerService {

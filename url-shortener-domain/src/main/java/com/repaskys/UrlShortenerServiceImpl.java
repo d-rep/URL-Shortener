@@ -34,6 +34,9 @@ import com.repaskys.domain.ShortUrl;
 import com.repaskys.repositories.UrlRepository;
 
 /**
+ * This class is for saving and finding ShortUrl instances.  It can also be used to expand a short code into a full URL.
+ * The implementation uses a Spring Data JPA repository.
+ *
  * @author Drew Repasky
  */
 public class UrlShortenerServiceImpl implements UrlShortenerService {

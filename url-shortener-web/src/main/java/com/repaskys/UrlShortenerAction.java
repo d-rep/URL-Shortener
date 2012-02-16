@@ -24,6 +24,8 @@ import org.slf4j.LoggerFactory;
 import com.repaskys.domain.ShortUrl;
 
 /**
+ * This is a Struts2 Action class, which is used to add new Short URLs.
+ *
  * @author Drew Repasky
  */
 public class UrlShortenerAction {

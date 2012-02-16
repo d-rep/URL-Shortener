@@ -33,6 +33,8 @@ import javax.validation.ValidatorFactory;
 import com.repaskys.domain.ShortUrl;
 
 /**
+ * Unit tests for the ShortUrl entity class.
+ *
  * @author Drew Repasky
  */
 public class ShortUrlTest {

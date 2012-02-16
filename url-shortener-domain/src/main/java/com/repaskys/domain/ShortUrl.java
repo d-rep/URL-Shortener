@@ -28,6 +28,8 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
+ * This class is used to save URL's and their corresponding shortened code.
+ *
  * @author Drew Repasky
  */
 @Entity

@@ -19,6 +19,8 @@ import java.lang.Iterable;
 import com.repaskys.domain.ShortUrl;
 
 /**
+ * This class is a Struts2 Action which is used to list each URL and its corresponding shortened code.
+ *
  * @author Drew Repasky
  */
 public class UrlShortenerAdminAction {
