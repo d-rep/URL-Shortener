@@ -38,7 +38,6 @@ import java.io.Serializable;
 // ref: http://stackoverflow.com/questions/3495368/unique-constraint-with-jpa-and-bean-validation#3499111
 @Table(uniqueConstraints=@UniqueConstraint(columnNames="shortUrl"))
 public class ShortUrl implements Serializable {
-   private static final String HTTP_PREFIX = "http://";
 
    @Id
    @GeneratedValue(strategy = AUTO)

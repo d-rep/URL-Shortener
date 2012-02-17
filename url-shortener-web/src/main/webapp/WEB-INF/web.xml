@@ -31,5 +31,25 @@
       <url-pattern>/*</url-pattern>
    </filter-mapping>
 
+   <security-constraint>
+      <web-resource-collection>
+         <web-resource-name>root tomcat application</web-resource-name>
+         <url-pattern>/admin</url-pattern>
+      </web-resource-collection>
+      <auth-constraint>
+         <role-name>admin</role-name>
+      </auth-constraint>
+   </security-constraint>
+
+   <security-role>
+      <description>The role that is required to do administrative tasks</description>
+      <role-name>admin</role-name>
+   </security-role>
+
+   <!-- TODO should we beef this up? -->
+   <login-config>
+      <auth-method>BASIC</auth-method>
+      <realm-name>Admin Realm</realm-name>
+  </login-config>
 
 </webapp>
