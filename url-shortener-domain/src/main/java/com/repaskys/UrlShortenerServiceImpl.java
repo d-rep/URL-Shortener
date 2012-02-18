@@ -26,8 +26,6 @@ import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.ValidatorFactory;
 import javax.validation.Validator;
 
 import com.repaskys.domain.ShortUrl;
@@ -52,7 +50,7 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
    public List<String> validateShortUrl(ShortUrl shortUrl) {
       List<String> violations = new ArrayList<String>();
       Set<ConstraintViolation<ShortUrl>> constraintViolations = validator.validate(shortUrl);
-      for(ConstraintViolation constraintViolation : constraintViolations) {
+      for(ConstraintViolation<ShortUrl> constraintViolation : constraintViolations) {
          violations.add(constraintViolation.getMessage());
       }
       return violations;
@@ -67,6 +65,7 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
          logger.error("DataAccessException when saving ShortUrl", ex);
          errorMessage = ex.getMessage();
       }
+      logger.debug("savedShortUrl: " + savedShortUrl);
       return errorMessage;
    }
 

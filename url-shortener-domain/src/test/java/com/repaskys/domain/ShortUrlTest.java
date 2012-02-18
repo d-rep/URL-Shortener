@@ -126,7 +126,7 @@ public class ShortUrlTest {
       constraintViolations = validator.validate(shortUrl);
 
       Set<String> actualErrors = new HashSet<String>();
-      for(ConstraintViolation violation: constraintViolations) {
+      for(ConstraintViolation<ShortUrl> violation: constraintViolations) {
          actualErrors.add(violation.getMessage());
          assertEquals("fullUrl", violation.getPropertyPath().toString());
       }
@@ -145,7 +145,7 @@ public class ShortUrlTest {
       constraintViolations = validator.validate(shortUrl);
 
       Set<String> actualErrors = new HashSet<String>();
-      for(ConstraintViolation violation: constraintViolations) {
+      for(ConstraintViolation<ShortUrl> violation: constraintViolations) {
          actualErrors.add(violation.getMessage());
          assertEquals("shortUrl", violation.getPropertyPath().toString());
       }

@@ -39,7 +39,9 @@ import java.io.Serializable;
 @Table(uniqueConstraints=@UniqueConstraint(columnNames="shortUrl"))
 public class ShortUrl implements Serializable {
 
-   @Id
+	private static final long serialVersionUID = 7827630535667254219L;
+
+@Id
    @GeneratedValue(strategy = AUTO)
    private Long id;
 

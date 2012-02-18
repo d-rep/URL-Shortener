@@ -20,8 +20,6 @@ import org.slf4j.LoggerFactory;
 import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.Preparable;
 
-import com.repaskys.domain.ShortUrl;
-
 /**
  * @author Drew Repasky
  */
