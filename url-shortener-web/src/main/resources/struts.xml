@@ -10,21 +10,21 @@
       <default-action-ref name="urlExpand"/>
 
       <action name="">
-         <result>addUrl.jsp</result>
+         <result>/WEB-INF/addUrl.jsp</result>
       </action>
 
       <action name="add" class="urlShortenerAction">
-         <result name="SUCCESS">success.jsp</result>
-         <result name="ERROR">saveFailed.jsp</result>
+         <result name="SUCCESS">/WEB-INF/success.jsp</result>
+         <result name="ERROR">/WEB-INF/saveFailed.jsp</result>
       </action>
 
       <action name="admin" class="urlShortenerAdminAction">
-         <result name="INPUT">admin.jsp</result>
+         <result name="INPUT">/WEB-INF/admin.jsp</result>
       </action>
 
       <action name="urlExpand" class="urlExpandAction">
          <result name="SUCCESS" type="redirect">${fullUrl}</result>
-         <result name="ERROR">badShortUrl.jsp</result>
+         <result name="ERROR">/WEB-INF/badShortUrl.jsp</result>
       </action>
 
    </package>
