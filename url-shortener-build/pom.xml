@@ -12,6 +12,7 @@
       <module>../url-shortener-web</module>
    </modules>
    <properties>
+      <buildProject>url-shortener-build</buildProject>
       <jdk.version>1.6</jdk.version>
       <spring.version>3.1.0.RELEASE</spring.version>
       <hibernate.version>4.0.1.Final</hibernate.version>
@@ -131,12 +132,28 @@
                   <target>${jdk.version}</target>
                </configuration>
             </plugin>
+            <!-- http://stackoverflow.com/questions/4675175/maven-site-maven-3-generates-empty-site-folder#answer-8965011 -->
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-javadoc-plugin</artifactId>
-               <version>2.8.1</version>
+               <artifactId>maven-site-plugin</artifactId>
+               <version>3.0</version>
             </plugin>
          </plugins>
       </pluginManagement>
    </build>
+   <reporting>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>2.8.1</version>
+         </plugin>
+      </plugins>
+   </reporting>
+   <developers>
+      <developer>
+         <name>Drew Repasky</name>
+         <email>drew@repaskys.com</email>
+      </developer>
+   </developers>
 </project>
