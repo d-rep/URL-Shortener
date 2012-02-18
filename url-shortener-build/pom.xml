@@ -14,7 +14,7 @@
    <properties>
       <buildProject>url-shortener-build</buildProject>
       <jdk.version>1.6</jdk.version>
-      <spring.version>3.1.0.RELEASE</spring.version>
+      <spring.version>3.1.1.RELEASE</spring.version>
       <hibernate.version>4.0.1.Final</hibernate.version>
    </properties>
    <dependencyManagement>
