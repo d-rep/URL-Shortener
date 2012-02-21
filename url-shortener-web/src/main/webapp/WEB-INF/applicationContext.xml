@@ -26,10 +26,10 @@
       <property name="urlShortenerService" ref="urlShortenerService"/>
    </bean>
 
-   <!--  tell spring to use annotation based congfigurations -->
+   <!-- tell spring to use annotation based congfigurations -->
    <context:annotation-config />
 
-   <!--  tell spring where to find the beans -->
+   <!-- tell spring where to find the beans -->
    <context:component-scan base-package="com.repaskys"/>
 
 </beans>
