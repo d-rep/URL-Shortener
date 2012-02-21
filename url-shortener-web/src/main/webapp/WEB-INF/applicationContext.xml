@@ -14,22 +14,22 @@
       <property name="target" ref="urlShortenerServiceImpl"/>
    </bean>
 
-   <bean id="urlShortenerAction" class="com.repaskys.UrlShortenerAction">
+   <bean id="urlShortenerAction" class="com.repaskys.actions.UrlShortenerAction">
       <property name="urlShortenerService" ref="urlShortenerService"/>
    </bean>
 
-   <bean id="urlShortenerAdminAction" class="com.repaskys.UrlShortenerAdminAction">
+   <bean id="urlShortenerAdminAction" class="com.repaskys.actions.UrlShortenerAdminAction">
       <property name="urlShortenerService" ref="urlShortenerService"/>
    </bean>
 
-   <bean id="urlExpandAction" class="com.repaskys.UrlExpandAction">
+   <bean id="urlExpandAction" class="com.repaskys.actions.UrlExpandAction">
       <property name="urlShortenerService" ref="urlShortenerService"/>
    </bean>
 
-   <!-- tell spring to use annotation based congfigurations -->
+   <!-- tell Spring to use annotation-based congfigurations -->
    <context:annotation-config />
 
-   <!-- tell spring where to find the beans -->
+   <!-- tell Spring where to find the beans -->
    <context:component-scan base-package="com.repaskys"/>
 
 </beans>

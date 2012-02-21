@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.repaskys;
+package com.repaskys.actions;
 
 import java.lang.Iterable;
 import com.repaskys.domain.ShortUrl;
+import com.repaskys.UrlShortenerService;
 
 /**
  * This class is a Struts2 Action which is used to list each URL and its corresponding shortened code.

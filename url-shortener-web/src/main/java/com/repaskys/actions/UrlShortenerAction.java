@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.repaskys;
+package com.repaskys.actions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.repaskys.domain.ShortUrl;
+import com.repaskys.UrlShortenerService;
 
 /**
  * This is a Struts2 Action class, which is used to add new Short URLs.

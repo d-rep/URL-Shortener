@@ -13,12 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.repaskys;
+package com.repaskys.actions;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.Preparable;
+
+import com.repaskys.UrlShortenerService;
 
 /**
  * @author Drew Repasky
