@@ -28,7 +28,22 @@ Or you can simply run it like this from the command line, which uses Jetty:
     cd url-shortener-web
     mvn jetty:run
 
+In place of Jetty, the project is also setup to use embedded Tomcat 6.0.35.  It can be run like this:
+
+    cd url-shortener-web
+    mvn tomcat6:run
+
 Then open your browser to this address: http://localhost:8080/url-shortener-web/
+
+If you want to use Eclipse, then simply run the following under the domain:
+
+    mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true
+
+and web project directories:
+
+    mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true -Dwtpversion=2.0
+
+Then you will be able to import the projects into Eclipse.  Alternatively, if you use _m2eclipse_, then you can simply click File -> Import... -> Existing Maven Projects
 
 
 Technologies

@@ -14,6 +14,7 @@
    <properties>
       <buildProject>url-shortener-build</buildProject>
       <jdk.version>1.6</jdk.version>
+      <!-- All the Spring modules in the final package won't have the same version (Spring Data JPA pulls in 3.0.5.RELEASE) -->
       <spring.version>3.1.1.RELEASE</spring.version>
       <hibernate.version>4.0.1.Final</hibernate.version>
    </properties>
@@ -71,7 +72,7 @@
          <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>1.0.2.RELEASE</version>
+            <version>1.0.3.RELEASE</version>
          </dependency>
          <dependency>
             <groupId>commons-dbcp</groupId>
@@ -137,6 +138,11 @@
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-site-plugin</artifactId>
                <version>3.0</version>
+            </plugin>
+            <plugin>
+               <groupId>org.apache.tomcat.maven</groupId>
+               <artifactId>tomcat6-maven-plugin</artifactId>
+               <version>2.0-beta-1</version>
             </plugin>
          </plugins>
       </pluginManagement>
