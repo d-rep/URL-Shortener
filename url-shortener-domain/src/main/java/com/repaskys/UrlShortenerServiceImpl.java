@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.transaction.TransactionException;
 
 import java.lang.Iterable;
 import java.util.ArrayList;
@@ -57,12 +58,23 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
    }
 
    public String saveUrl(ShortUrl shortUrl) {
+      logger.trace("trying to save URL...");
       String errorMessage = "";
       ShortUrl savedShortUrl = null;
+      // FIXME these cryptic exception messasges will be bubbled up to the user
       try {
          savedShortUrl = urlRepository.save(shortUrl);
       } catch(DataAccessException ex) {
+         // For a non-unique short code, we'll get an error: "org.springframework.dao.DataIntegrityViolationException: Duplicate entry ..."
          logger.error("DataAccessException when saving ShortUrl", ex);
+         errorMessage = ex.getMessage();
+      } catch(TransactionException ex) {
+         // when we can't connect to the database, it throws a CannotCreateTransactionException
+         logger.error("TransactionException when saving ShortUrl", ex);
+         errorMessage = ex.getMessage();
+      } catch(RuntimeException ex) {
+         // we need the generic catch all, so that the raw exception stack trace doesn't make it all the way back to the user
+         logger.error("RuntimeException when saving ShortUrl", ex);
          errorMessage = ex.getMessage();
       }
       logger.debug("savedShortUrl: " + savedShortUrl);

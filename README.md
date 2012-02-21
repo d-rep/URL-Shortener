@@ -17,7 +17,7 @@ Building
 --------
 The latest and greatest source of the URL Shortener can be cloned from [GitHub].
 
-Build the code with the following commands, which will produce a WAR file that can be deployed to any recent Java application server.
+Build the code with the following commands, which will produce a WAR file that can be deployed to any recent Java application server (Servlet 2.4 or greater).
 
     cd url-shortener-build
     mvn clean install
