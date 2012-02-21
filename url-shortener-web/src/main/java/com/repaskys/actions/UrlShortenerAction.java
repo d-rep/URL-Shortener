@@ -52,19 +52,25 @@ public class UrlShortenerAction {
    }
 
    public String execute() {
-      violations = urlShortenerService.validateShortUrl(shortUrl);
       String returnCode = "ERROR";
 
-      if(violations.isEmpty()) {
-         String errorMessage = urlShortenerService.saveUrl(shortUrl);
-         if(StringUtils.isBlank(errorMessage)) {
-            returnCode = "SUCCESS";
+      if(shortUrl != null) {
+         violations = urlShortenerService.validateShortUrl(shortUrl);
+
+         if(violations.isEmpty()) {
+            String errorMessage = urlShortenerService.saveUrl(shortUrl);
+            if(StringUtils.isBlank(errorMessage)) {
+               returnCode = "SUCCESS";
+            } else {
+               violations.add(errorMessage);
+               returnCode = "ERROR";
+            }
          } else {
-            violations.add(errorMessage);
-            returnCode = "ERROR";
+            logger.debug("Did not save due to validation errors: " + violations);
          }
+
       } else {
-         logger.debug("Did not save due to validation errors: " + violations);
+         violations.add("No URL to save");
       }
       return returnCode;
    }
