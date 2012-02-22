@@ -8,6 +8,6 @@
    </head>
    <body>
       <h1>Success!</h1>
-      Your new URL has been created.  Test it out by <s:a href="%{shortUrl.shortUrl}">clicking here</s:a>.
+      Your new URL has been created.  Test it out by <s:a href="%{shortUrl.shortUrl}" target="_blank">clicking here</s:a>.
    </body>
 </html>
