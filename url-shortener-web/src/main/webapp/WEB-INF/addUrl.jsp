@@ -7,11 +7,11 @@
       <title>URL Shortener - Add URL</title>
    </head>
    <body>
-      <h1>Add New URL</h1>
+      <h1>Create New Shortened URL</h1>
       <s:form action="add">
-         <s:textfield name="shortUrl.fullUrl" label="Please enter a URL to shorten" required="true"/>
-         <s:textfield name="shortUrl.shortUrl" label="Custom Alias" required="true"/>
-         <s:submit/>
+         <s:textfield name="shortUrl.fullUrl" label="Please enter a URL to shorten" required="true" maxlength="500" size="75"/>
+         <s:textfield name="shortUrl.shortUrl" label="Custom Alias" required="true" maxlength="20" size="75"/>
+         <s:submit value="Add URL"/>
       </s:form>
    </body>
 </html>
