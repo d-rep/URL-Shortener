@@ -16,7 +16,7 @@
       <jdk.version>1.6</jdk.version>
       <!-- All the Spring modules in the final package won't have the same version (Spring Data JPA pulls in 3.0.5.RELEASE) -->
       <spring.version>3.1.1.RELEASE</spring.version>
-      <struts.version>2.3.1.1</struts.version>
+      <struts.version>2.3.1.2</struts.version>
       <hibernate.version>4.0.1.Final</hibernate.version>
    </properties>
    <dependencyManagement>
