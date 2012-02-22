@@ -17,7 +17,7 @@ package com.repaskys.actions;
 
 import java.lang.Iterable;
 import com.repaskys.domain.ShortUrl;
-import com.repaskys.UrlShortenerService;
+import com.repaskys.services.UrlShortenerService;
 
 /**
  * This class is a Struts2 Action which is used to list each URL and its corresponding shortened code.

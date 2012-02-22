@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.repaskys;
+package com.repaskys.services;
 
 import java.lang.Iterable;
 import java.util.List;

@@ -22,7 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.repaskys.domain.ShortUrl;
-import com.repaskys.UrlShortenerService;
+import com.repaskys.services.UrlShortenerService;
 
 /**
  * This is a Struts2 Action class, which is used to add new Short URLs.
