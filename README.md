@@ -8,9 +8,9 @@ Copyright &copy; 2012-, [Drew Repasky].  Licensed under [Apache License, Version
 
 Software Requirements / Prerequisites
 -------------------------------------
-This project requires [Apache Maven] 3 and a Java Development Kit (JDK) v1.6 or newer to compile the code.  This does not require a stand-alone Java application server be installed.
+This project requires a [Java Development Kit] v1.6 or newer and [Apache Maven] 3 to compile the source code.
 
-The default database is configured to be [MySQL] 5.  *You must update this file with your database settings before the project will work*: `url-shortener-domain/src/main/resources/dev.properties`
+If you simply want to test drive the application, it does not require a stand-alone database or Java application server.  Out of the box, it will use an in-memory H2 database instance and can be started on an embedded version of Tomcat or Jetty, using a Maven command.
 
 
 Building
@@ -24,19 +24,20 @@ Build the code with the following commands:
     cd URL-Shortener/url-shortener-build
     mvn clean package
 
+
 Running
 -------
 The above commands will produce a WAR file in the directory `url-shortener-web/target/` that can be deployed to any recent Java application server (Servlet 2.4 or greater).
 
-Alternatively, you can simply run it like this from the command line, which uses embedded Jetty:
-
-    cd url-shortener-web
-    mvn jetty:run
-
-In place of Jetty, the project is also setup to use embedded Tomcat 6.0.35:
+Alternatively, you can simply run it like this from the command line, which uses embedded Tomcat 6.0.35:
 
     cd url-shortener-web
     mvn tomcat6:run
+
+In place of Tomcat, the project is also setup to use embedded Jetty:
+
+    cd url-shortener-web
+    mvn jetty:run
 
 Then open your browser to this address: http://localhost:8080/url-shortener-web/
 
@@ -64,19 +65,31 @@ This is a web application written in Java.  It illustrates how to use [Struts 2]
 It uses JPA 2.0 for data persistence, with help from the [Spring Data JPA] project.  Validation is done using [JSR 303].
 
 
-Application Server
-------------------
+Deploying
+---------
+For testing purposes, this application needs only Maven to run.  However, for production usage, you will need a full-fledged database and application server.
+
+
+### Database ###
+You must update this file with your database settings: `url-shortener-domain/src/main/resources/dev.properties`.  By default, drivers are included for [MySQL] 5.
+
+Next, make sure to remove the H2 configuration file (`spring-h2-database.xml`) from this file: `url-shortener-web/src/main/webapp/WEB-INF/web.xml`
+
+You should also configure in a JNDI datasource and rip out the Apache DBCP (database connection pooling) configuration from this file: `url-shortener-domain/src/main/resources/spring-dataSource.xml`
+
+### App Server ###
 This application uses JavaEE 6 API's, but it assumes you will be deploying to a simple servlet container like [Apache Tomcat], so implementation libraries are included by default.
 
 **The default configuration will build a WAR file that is _not_ appropriate for a full-fledged JavaEE 6 server!**  For instance, if you are using IBM Websphere 8, then the Java Persistence API 2.0 (JSR 317) and the Bean Validation API (JSR 303) dependencies will already be provided, so you don't need Maven to include those in the WAR.
 
 Just edit this file -- `url-shortener-build/pom.xml` -- and change the `<scope/>` of hibernate-entitymanager from "runtime" to "provided".  Note: this is untested.  I made a design decision to lock in hibernate-validator as the JSR 303 implementation and use Hibernate-specific validators like @NotBlank and @URL, so code changes will be required if that's not your provider.
 
-You should also configure in a JNDI datasource and rip out the Apache DBCP (database connection pooling) configuration from this file: `url-shortener-domain/src/main/resources/spring-dataSource.xml`
+
 
 
 [Drew Repasky]: http://twitter.com/drewrepasky
 [Apache License, Version 2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
+[Java Development Kit]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 [Apache Maven]: http://maven.apache.org/download.html
 [MySQL]: http://dev.mysql.com/downloads/
 [Struts 2]: http://struts.apache.org/2.3.1.1/docs/guides.html

@@ -14,7 +14,9 @@
          /WEB-INF/applicationContext.xml,
          classpath:spring-dataSource.xml,
          classpath:spring-data.xml,
-         classpath:spring-aspects.xml
+         classpath:spring-aspects.xml,
+         <!-- Do NOT run H2 in production. -->
+         classpath:spring-h2-database.xml
       </param-value>
    </context-param>
 

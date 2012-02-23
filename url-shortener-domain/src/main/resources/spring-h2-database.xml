@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-lazy-init="true">
+
+   <!--
+      This will load an H2 database in-memory using Spring.
+      Ref: http://www.h2database.com/html/tutorial.html#spring 
+   -->
+   <bean id="org.h2.tools.Server"
+       class="org.h2.tools.Server"
+       factory-method="createTcpServer"
+       init-method="start"
+       destroy-method="stop">
+
+       <constructor-arg value="-tcp,-tcpAllowOthers,true,-tcpPort,8043" />
+
+   </bean>
+
+</beans>
