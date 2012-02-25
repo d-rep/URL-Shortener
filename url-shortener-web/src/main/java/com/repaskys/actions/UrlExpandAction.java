@@ -23,6 +23,8 @@ import com.opensymphony.xwork2.Preparable;
 import com.repaskys.services.UrlShortenerService;
 
 /**
+ * This class will look up a short code and expand it into the full URL.
+ *
  * @author Drew Repasky
  */
 public class UrlExpandAction implements Preparable {
@@ -67,10 +69,6 @@ public class UrlExpandAction implements Preparable {
    public String execute() {
       logger.debug("My action name (the shortened URL) is: " + shortUrl);
       this.fullUrl = urlShortenerService.expandShortUrl(shortUrl);
-      if(this.fullUrl != null && this.fullUrl.length() > 0) {
-         return "SUCCESS";
-      } else {
-         return "ERROR";
-      }
+      return (this.fullUrl != null && this.fullUrl.length() > 0) ? "SUCCESS" : "ERROR";
    }
 }
