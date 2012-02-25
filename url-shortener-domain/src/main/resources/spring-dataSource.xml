@@ -3,12 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-   <!-- Warning: only use this for TESTING and not for production -->
-   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-       <property name="driverClassName" value="${jdbc.driverClassName}"/>
-       <property name="url" value="${jdbc.url}"/>
-       <property name="username" value="${jdbc.username}"/>
-       <property name="password" value="${jdbc.password}"/>
+   <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+      <property name="jndiName" value="java:comp/env/jdbc/url_test"/>
    </bean>
 
 </beans>

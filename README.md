@@ -66,11 +66,9 @@ For testing purposes, this application needs only Maven to run.  However, for pr
 
 
 ### Database ###
-You must update this file with your database settings: `url-shortener-domain/src/main/resources/dev.properties`.  By default, drivers are included for [MySQL] 5.
+On your application server, you should create a JNDI datasource with the name `jdbc/url_test`.  By default, drivers are included for [MySQL] 5.
 
 Next, make sure to remove the H2 configuration file (`spring-h2-database.xml`) from this file: `url-shortener-web/src/main/webapp/WEB-INF/web.xml`
-
-You should also configure in a JNDI datasource and rip out the Apache DBCP (database connection pooling) configuration from this file: `url-shortener-domain/src/main/resources/spring-dataSource.xml`
 
 ### App Server ###
 This application uses JavaEE 6 API's, but it assumes you will be deploying to a simple servlet container like [Apache Tomcat], so implementation libraries are included by default.

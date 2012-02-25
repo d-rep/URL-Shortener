@@ -5,8 +5,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
-   <context:property-placeholder location="classpath:dev.properties"/>
-
    <bean id="urlShortenerServiceImpl" class="com.repaskys.services.UrlShortenerServiceImpl"/>
 
    <bean id="urlShortenerService" class="org.springframework.aop.framework.ProxyFactoryBean">

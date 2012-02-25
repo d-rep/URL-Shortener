@@ -19,9 +19,8 @@
    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
       <property name="persistenceUnitName" value="jpa.url"/>
       <property name="jpaVendorAdapter">
-         <bean class="${jdbc.jpaVendorAdapterClass}">
+         <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
             <property name="generateDdl" value="true"/>
-            <property name="databasePlatform" value="${jdbc.databaseVendorClass}"/>
          </bean>
       </property>
       <!-- TODO do I need a load time weaver? -->
