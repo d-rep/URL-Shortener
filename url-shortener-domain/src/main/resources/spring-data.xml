@@ -21,6 +21,8 @@
       <property name="jpaVendorAdapter">
          <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
             <property name="generateDdl" value="true"/>
+            <!-- FIXME This locks us into H2.  Should be able to automatically change this to something else in the deployed app (org.hibernate.dialect.MySQLDialect), like with a properties file. -->
+            <property name="databasePlatform" value="org.hibernate.dialect.H2Dialect"/>
          </bean>
       </property>
       <!-- TODO do I need a load time weaver? -->
