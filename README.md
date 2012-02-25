@@ -67,6 +67,7 @@ For testing purposes, this application needs only Maven to run.  However, for pr
 
 ### Database ###
 On your application server, you should create a JNDI datasource with the name `jdbc/url_test`.  By default, drivers are included for [MySQL] 5.
+You will also need to update the databasePlatform (Dialect) inside the file `url-shortener-domain/src/main/resources/spring-data.xml`.
 
 Next, make sure to remove the H2 configuration file (`spring-h2-database.xml`) from this file: `url-shortener-web/src/main/webapp/WEB-INF/web.xml`
 
