@@ -10,7 +10,7 @@ Software Requirements / Prerequisites
 -------------------------------------
 This project requires a [Java Development Kit] v1.6 or newer and [Apache Maven] 3 to compile the source code.
 
-If you simply want to test drive the application, it does not require a stand-alone database or Java application server.  Out of the box, it will use an in-memory H2 database instance and can be started on an embedded version of Tomcat or Jetty, using a Maven command.
+If you simply want to test drive the application, it does not require a stand-alone database or Java application server.  Out of the box, it will use an in-memory H2 database instance and can be started on an embedded version of Tomcat, using a Maven command.
 
 
 Building
@@ -33,11 +33,6 @@ Alternatively, you can simply run it like this from the command line, which uses
 
     cd url-shortener-web
     mvn tomcat6:run
-
-In place of Tomcat, the project is also setup to use embedded Jetty:
-
-    cd url-shortener-web
-    mvn jetty:run
 
 Then open your browser to this address: http://localhost:8080/url-shortener-web/
 
