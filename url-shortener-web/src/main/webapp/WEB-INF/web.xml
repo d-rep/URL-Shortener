@@ -3,8 +3,8 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:javaee="http://java.sun.com/xml/ns/javaee"
 	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
-	version="2.4">
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd"
+	version="2.5">
 	
    <display-name>URL Shortener</display-name>
 
@@ -15,7 +15,7 @@
          classpath:spring-dataSource.xml,
          classpath:spring-data.xml,
          classpath:spring-aspects.xml,
-         <!-- Do NOT run H2 in production. -->
+         <!-- FIXME Do NOT run H2 in production. -->
          classpath:spring-h2-database.xml
       </param-value>
    </context-param>
@@ -60,5 +60,11 @@
       <auth-method>BASIC</auth-method>
       <realm-name>Admin Realm</realm-name>
   </login-config>
+  
+  <env-entry>
+    <env-entry-name>envPropertiesFile</env-entry-name>
+    <env-entry-value>env-prod.properties</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
 
 </web-app>

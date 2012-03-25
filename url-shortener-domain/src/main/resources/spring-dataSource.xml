@@ -5,6 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
           http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd">
 
+   <jee:jndi-lookup id="envPropertiesFile" jndi-name="java:comp/env/envPropertiesFile"/>
+   
    <jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/url_test"/>
 
 </beans>

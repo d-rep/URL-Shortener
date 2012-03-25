@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<cloudbees-web-app xmlns="http://www.cloudbees.com/xml/webapp/1">
+	<appid>drew/url-shortener</appid>
+
+    <!-- refer to: https://wiki.cloudbees.com/bin/view/RUN/DatabaseGuide -->
+	<resource name="jdbc/url_test" auth="Container" type="javax.sql.DataSource">
+		<param name="username" value="webapp" />
+		<param name="password" value="T7UFcXYx3G" />
+		<param name="url" value="jdbc:cloudbees://url_test" />
+
+		<!-- Apache DBCP connection pool settings -->
+		<param name="maxactive" value="5" />
+		<param name="maxidle" value="2" />
+		<param name="maxWait" value="10000" />
+		<param name="removeAbandoned" value="true" />
+		<param name="removeAbandonedTimeout" value="60" />
+		<param name="logAbandoned" value="true" />
+
+		<!-- Avoid Database Idle Timeouts: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException -->
+		<param name="validationQuery" value="SELECT 1" />
+		<param name="testOnBorrow" value="true" />
+	</resource>
+
+</cloudbees-web-app>

@@ -10,4 +10,7 @@
             url="jdbc:h2:file:h2\db"
             maxActive="8"
             maxIdle="4"/>
+
+  <Environment name="envPropertiesFile" value="env-test.properties" type="java.lang.String" override="false"/>
+
 </Context>
