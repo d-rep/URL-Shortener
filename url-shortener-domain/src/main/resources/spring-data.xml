@@ -8,12 +8,15 @@
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
           http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
+   <context:property-placeholder location="classpath:env.properties" />
+   
    <!-- directory to scan for repository classes -->
    <jpa:repositories base-package="com.repaskys.repositories"/>
 
    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
       <property name="entityManagerFactory" ref="entityManagerFactory"/>
    </bean>
+   
 
    <!-- refer to http://static.springsource.org/spring/docs/3.1.0.RELEASE/reference/html/orm.html#orm-jpa-setup-lcemfb -->
    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -21,8 +24,7 @@
       <property name="jpaVendorAdapter">
          <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
             <property name="generateDdl" value="true"/>
-            <!-- FIXME This locks us into H2.  Should be able to automatically change this to something else in the deployed app (org.hibernate.dialect.MySQLDialect), like with a properties file. -->
-            <property name="databasePlatform" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="databasePlatform" value="${database.dialect}"/>
          </bean>
       </property>
       <!-- TODO do I need a load time weaver? -->
