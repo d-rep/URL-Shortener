@@ -22,4 +22,5 @@ package com.repaskys.url.algorithms;
  */
 public interface Codec {
 	String encode(int i);
+	int decode(String s);
 }

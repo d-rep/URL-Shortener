@@ -46,13 +46,13 @@ public class AlphaNumericCodecTest {
 	 * </pre>
 	 */
 	@Test
-	public void cb() {
+	public void cbEncode() {
 		String s = alphaNumericCodec.encode(125);
 		assertEquals("cb", s);
 	}
 	
 	@Test
-	public void e9a() {
+	public void e9aEncode() {
 		String s = alphaNumericCodec.encode(19158);
 		assertEquals("e9a", s);
 	}
@@ -111,6 +111,29 @@ public class AlphaNumericCodecTest {
 		assertEquals("b9", alphaNumericCodec.encode(123));
 		assertEquals("ca", alphaNumericCodec.encode(124));
 		assertEquals("c9", alphaNumericCodec.encode(185));
+	}
+	
+	
+	@Test
+	public void cbDecode() {
+		int i = alphaNumericCodec.decode("cb");
+		assertEquals(125, i);
+	}
+	
+	@Test
+	public void e9aDecode() {
+		int i = alphaNumericCodec.decode("e9a");
+		assertEquals(19158, i);
+	}
+	
+	@Test
+	public void testDecodeTwoUpperCaseProgression() {
+		assertEquals(62, alphaNumericCodec.decode("ba"));
+		assertEquals(63, alphaNumericCodec.decode("bb"));
+		assertEquals(64, alphaNumericCodec.decode("bc"));
+		assertEquals(123, alphaNumericCodec.decode("b9"));
+		assertEquals(124, alphaNumericCodec.decode("ca"));
+		assertEquals(185, alphaNumericCodec.decode("c9"));
 	}
 
 }
