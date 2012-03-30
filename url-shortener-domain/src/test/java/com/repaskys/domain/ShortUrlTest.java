@@ -61,18 +61,14 @@ public class ShortUrlTest {
 
    @Test
    public void testValidShortUrl() {
-      shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("http://www.google.com");
-      assertEquals("abcdef", shortUrl.getShortUrl());
       assertEquals("http://www.google.com", shortUrl.getFullUrl());
-
       constraintViolations = validator.validate(shortUrl);
       assertTrue(constraintViolations.isEmpty());
    }
 
    @Test
    public void fullUrlCannotBeNull() {
-      shortUrl.setShortUrl("abcdef");
       constraintViolations = validator.validate(shortUrl);
       assertEquals(1, constraintViolations.size());
       violation = constraintViolations.iterator().next();
@@ -82,7 +78,6 @@ public class ShortUrlTest {
 
    @Test
    public void fullUrlCannotBeBlank() {
-      shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("");
       constraintViolations = validator.validate(shortUrl);
       assertEquals(1, constraintViolations.size());
@@ -98,7 +93,6 @@ public class ShortUrlTest {
          add("Expected a URL (example: http://www.google.com)");
       }};
 
-      shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl(" ");
 
       // this is unordered, so we compare 2 HashSets of only the error messages
@@ -113,38 +107,7 @@ public class ShortUrlTest {
    }
 
    @Test
-   public void shortUrlAllowsNumbers() {
-      shortUrl.setShortUrl("blah123abc");
-      shortUrl.setFullUrl("http://www.google.com");
-      constraintViolations = validator.validate(shortUrl);
-      assertEquals(0, constraintViolations.size());
-   }
-
-   @Test
-   public void shortUrlAllEnglishChars() {
-      shortUrl.setShortUrl("Niño");
-      shortUrl.setFullUrl("http://www.google.com");
-      constraintViolations = validator.validate(shortUrl);
-      assertEquals(1, constraintViolations.size());
-      violation = constraintViolations.iterator().next();
-      assertEquals("Short URL must be all letters and numbers", violation.getMessage());
-      assertEquals("shortUrl", violation.getPropertyPath().toString());
-   }
-
-   @Test
-   public void shortUrlCannotHaveSpaces() {
-      shortUrl.setShortUrl("Homer Simpson");
-      shortUrl.setFullUrl("http://www.google.com");
-      constraintViolations = validator.validate(shortUrl);
-      assertEquals(1, constraintViolations.size());
-      violation = constraintViolations.iterator().next();
-      assertEquals("Short URL must be all letters and numbers", violation.getMessage());
-      assertEquals("shortUrl", violation.getPropertyPath().toString());
-   }
-
-   @Test
    public void fullUrlTooLong() {
-      shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("http://www." + StringUtils.repeat("B", 486) + ".com");
       constraintViolations = validator.validate(shortUrl);
       assertEquals(1, constraintViolations.size());
@@ -154,19 +117,7 @@ public class ShortUrlTest {
    }
 
    @Test
-   public void shortUrlTooLong() {
-      shortUrl.setShortUrl(StringUtils.repeat("A", 21));
-      shortUrl.setFullUrl("http://www.google.com");
-      constraintViolations = validator.validate(shortUrl);
-      assertEquals(1, constraintViolations.size());
-      violation = constraintViolations.iterator().next();
-      assertEquals("Short URL must be less than 20 characters long", violation.getMessage());
-      assertEquals("shortUrl", violation.getPropertyPath().toString());
-   }
-
-   @Test
    public void fullUrlMustHaveHttpPrefix() {
-      shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("www.google.com");
       constraintViolations = validator.validate(shortUrl);
       assertEquals(1, constraintViolations.size());
@@ -177,7 +128,6 @@ public class ShortUrlTest {
 
    @Test
    public void fullUrlCannotAllowXSSChars() {
-      shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("www.g<script>oogle.com");
       constraintViolations = validator.validate(shortUrl);
       assertEquals(1, constraintViolations.size());
@@ -188,7 +138,6 @@ public class ShortUrlTest {
 
    @Test
    public void fullUrlCannotAllowSQLInjectionChars() {
-      shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("www.goo'gle.com");
       constraintViolations = validator.validate(shortUrl);
       assertEquals(1, constraintViolations.size());
@@ -199,7 +148,6 @@ public class ShortUrlTest {
 
    @Test
    public void fullUrlStillValidWithoutWWW() {
-      shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("http://google.com");
       constraintViolations = validator.validate(shortUrl);
       assertEquals(0, constraintViolations.size());
@@ -207,16 +155,14 @@ public class ShortUrlTest {
 
    @Test
    public void fullUrlStillValidWithParameters() {
-      shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("http://google.com?q=repasky");
       constraintViolations = validator.validate(shortUrl);
       assertEquals(0, constraintViolations.size());
    }
 
-   // TODO The @URL validation doesn't require a domain postfix.  We may want to add a regexp to check for the case where a user leaves it off.
+   // TODO The @URL validation doesn't require a domain postfix (such as ".com").  We may want to add a regexp to check for the case where a user leaves it off.
    @Test
    public void fullUrlMustHaveDomainPostfix() {
-      shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("http://www.google");
       constraintViolations = validator.validate(shortUrl);
       assertEquals(0, constraintViolations.size());
@@ -224,7 +170,6 @@ public class ShortUrlTest {
 
    @Test
    public void fullUrlCanHaveUncommonDomainPostfixBiz() {
-      shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("http://repasky.biz");
       constraintViolations = validator.validate(shortUrl);
       assertEquals(0, constraintViolations.size());
@@ -232,7 +177,6 @@ public class ShortUrlTest {
 
    @Test
    public void fullUrlCanHaveUncommonDomainPostfixInfo() {
-      shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("http://repasky.info");
       constraintViolations = validator.validate(shortUrl);
       assertEquals(0, constraintViolations.size());
@@ -240,7 +184,6 @@ public class ShortUrlTest {
 
    @Test
    public void fullUrlCanHaveUncommonDomainPostfixName() {
-      shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("http://repasky.name");
       constraintViolations = validator.validate(shortUrl);
       assertEquals(0, constraintViolations.size());
@@ -248,10 +191,17 @@ public class ShortUrlTest {
 
    @Test
    public void fullUrlCanHaveUncommonDomainPostfixLy() {
-      shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("http://bit.ly");
       constraintViolations = validator.validate(shortUrl);
       assertEquals(0, constraintViolations.size());
+   }
+   
+   @Test
+   public void shortCodeGenerated() {
+	   Long id = new Long(125);
+	   shortUrl.setId(id);
+	   assertEquals(id, shortUrl.getId());
+	   assertEquals("cb", shortUrl.getShortUrl());
    }
 
 }

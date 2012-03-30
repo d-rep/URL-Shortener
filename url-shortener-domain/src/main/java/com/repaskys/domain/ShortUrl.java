@@ -15,12 +15,15 @@
  */
 package com.repaskys.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import static javax.persistence.GenerationType.AUTO;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
@@ -28,9 +31,9 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-import java.io.Serializable;
+
+import com.repaskys.url.algorithms.AlphaNumericCodec;
+import com.repaskys.url.algorithms.Codec;
 
 /**
  * This class is used to save URL's and their corresponding shortened code.
@@ -38,13 +41,28 @@ import java.io.Serializable;
  * @author Drew Repasky
  */
 @Entity
-// When defining the database, this makes sure that the shortUrl field is unique.
-// but we have to do this with the table schema and NOT as part of validation:
-// ref: http://stackoverflow.com/questions/3495368/unique-constraint-with-jpa-and-bean-validation#3499111
-@Table(uniqueConstraints=@UniqueConstraint(columnNames="shortUrl"))
 public class ShortUrl implements Serializable {
 
-	private static final long serialVersionUID = 7827630535667254219L;
+   private static final long serialVersionUID = 7827630535667254219L;
+   
+   private static final Codec codec = new AlphaNumericCodec();
+   
+   /**
+    * Helper method.
+    * 
+    * @see http://stackoverflow.com/questions/1590831/safely-casting-long-to-int-in-java
+    */
+   private static int safeLongToInt(long l) {
+      if (l < Integer.MIN_VALUE || l > Integer.MAX_VALUE) {
+         throw new IllegalArgumentException(l + " cannot be cast to int without changing its value.");
+      }
+      return (int) l;
+   }
+   
+   public static Long shortCodeToId(String shortCode) {
+	   int i = codec.decode(shortCode);
+	   return new Long(i);
+   }
 
    @Id
    @GeneratedValue(strategy = AUTO)
@@ -55,12 +73,12 @@ public class ShortUrl implements Serializable {
    @URL
    private String fullUrl;
 
-   @Size(max = 20, message="Short URL {javax.validation.constraints.Size.message}")
-   @Pattern(regexp = "[a-zA-Z0-9]*", message="Short URL must be all letters and numbers")
-   private String shortUrl;
-
    public Long getId() {
       return this.id;
+   }
+
+   public void setId(Long id) {
+      this.id = id;
    }
 
    public String getFullUrl() {
@@ -74,15 +92,11 @@ public class ShortUrl implements Serializable {
       this.fullUrl = fullUrl;
    }
 
+   @Transient
    public String getShortUrl() {
-      return this.shortUrl;
-   }
-
-   /**
-    * Short URL must be a string of all English characters.
-    */
-   public void setShortUrl(String shortUrl) {
-      this.shortUrl = shortUrl;
+      // FIXME precision can be lost
+      int integerId = safeLongToInt(this.getId());
+      return codec.encode(integerId);
    }
 
 	@Override
