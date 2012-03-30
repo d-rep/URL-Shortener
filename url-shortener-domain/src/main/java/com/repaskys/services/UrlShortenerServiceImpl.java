@@ -15,6 +15,7 @@
  */
 package com.repaskys.services;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ import javax.validation.Validator;
 
 import com.repaskys.domain.ShortUrl;
 import com.repaskys.repositories.UrlRepository;
+import com.repaskys.url.algorithms.Codec;
 
 /**
  * This class is for saving and finding ShortUrl instances.  It can also be used to expand a short code into a full URL.
@@ -47,6 +49,22 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
 
    @Autowired
    private Validator validator;
+   
+   @Autowired
+   private Codec codec;
+
+   /**
+    * Helper method.
+    * 
+    * @see http://stackoverflow.com/questions/1590831/safely-casting-long-to-int-in-java
+    */
+   private static int safeLongToInt(long l) {
+	    if (l < Integer.MIN_VALUE || l > Integer.MAX_VALUE) {
+	        throw new IllegalArgumentException
+	            (l + " cannot be cast to int without changing its value.");
+	    }
+	    return (int) l;
+	}
 
    public List<String> validateShortUrl(ShortUrl shortUrl) {
       List<String> violations = new ArrayList<String>();
@@ -61,9 +79,29 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
       logger.trace("trying to save URL...");
       String errorMessage = "";
       ShortUrl savedShortUrl = null;
-      // FIXME these cryptic exception messasges will be bubbled up to the user
+      
+      // FIXME these cryptic exception messages will be bubbled up to the user
       try {
+         // insert a new record
          savedShortUrl = urlRepository.save(shortUrl);
+         
+         // if the shortened code wasn't specified, generate one
+         if(StringUtils.isBlank(savedShortUrl.getShortUrl())) {
+        	 // FIXME precision can be lost
+        	 int id = safeLongToInt(savedShortUrl.getId());
+        	 
+        	 String shortCode = codec.encode(id);
+        	 logger.debug("The generated shortened code is: " + shortCode);
+        	 savedShortUrl.setShortUrl(shortCode);
+        	 shortUrl.setShortUrl(shortCode);
+        	 
+        	 // FIXME this is a 2-step save, so should make this a transaction
+        	 // FIXME if the short code is already taken, then this will fail
+        	 
+        	 // update the existing record so that it has a shortened code
+        	 urlRepository.save(savedShortUrl);
+         }
+         
       } catch(DataAccessException ex) {
          // For a non-unique short code, we'll get an error: "org.springframework.dao.DataIntegrityViolationException: Duplicate entry ..."
          logger.error("DataAccessException when saving ShortUrl", ex);

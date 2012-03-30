@@ -21,6 +21,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import static javax.persistence.GenerationType.AUTO;
+
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
 import javax.validation.constraints.Pattern;
@@ -41,7 +46,7 @@ public class ShortUrl implements Serializable {
 
 	private static final long serialVersionUID = 7827630535667254219L;
 
-@Id
+   @Id
    @GeneratedValue(strategy = AUTO)
    private Long id;
 
@@ -50,9 +55,8 @@ public class ShortUrl implements Serializable {
    @URL
    private String fullUrl;
 
-   @NotBlank(message = "Short URL {javax.validation.constraints.NotBlank.message}")
    @Size(max = 20, message="Short URL {javax.validation.constraints.Size.message}")
-   @Pattern(regexp = "[a-zA-Z]*", message="Short URL must be all letters")
+   @Pattern(regexp = "[a-zA-Z0-9]*", message="Short URL must be all letters and numbers")
    private String shortUrl;
 
    public Long getId() {
@@ -80,4 +84,21 @@ public class ShortUrl implements Serializable {
    public void setShortUrl(String shortUrl) {
       this.shortUrl = shortUrl;
    }
+
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
+	}
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this,
+				ToStringStyle.MULTI_LINE_STYLE);
+	}
+
 }

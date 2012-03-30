@@ -81,16 +81,6 @@ public class ShortUrlTest {
    }
 
    @Test
-   public void shortUrlCannotBeNull() {
-      shortUrl.setFullUrl("http://www.google.com");
-      constraintViolations = validator.validate(shortUrl);
-      assertEquals(1, constraintViolations.size());
-      violation = constraintViolations.iterator().next();
-      assertEquals("Short URL cannot be blank", violation.getMessage());
-      assertEquals("shortUrl", violation.getPropertyPath().toString());
-   }
-
-   @Test
    public void fullUrlCannotBeBlank() {
       shortUrl.setShortUrl("abcdef");
       shortUrl.setFullUrl("");
@@ -99,17 +89,6 @@ public class ShortUrlTest {
       violation = constraintViolations.iterator().next();
       assertEquals("Full URL cannot be blank", violation.getMessage());
       assertEquals("fullUrl", violation.getPropertyPath().toString());
-   }
-
-   @Test
-   public void shortUrlCannotBeBlank() {
-      shortUrl.setShortUrl("");
-      shortUrl.setFullUrl("http://www.google.com");
-      constraintViolations = validator.validate(shortUrl);
-      assertEquals(1, constraintViolations.size());
-      violation = constraintViolations.iterator().next();
-      assertEquals("Short URL cannot be blank", violation.getMessage());
-      assertEquals("shortUrl", violation.getPropertyPath().toString());
    }
 
    @Test
@@ -134,33 +113,11 @@ public class ShortUrlTest {
    }
 
    @Test
-   public void shortUrlCannotOnlyBeSpaces() {
-      Set<String> expectedErrors = new HashSet<String>() {{
-         add("Short URL cannot be blank");
-         add("Short URL must be all letters");
-      }};
-
-      shortUrl.setShortUrl(" ");
-      shortUrl.setFullUrl("http://www.google.com");
-      constraintViolations = validator.validate(shortUrl);
-
-      Set<String> actualErrors = new HashSet<String>();
-      for(ConstraintViolation<ShortUrl> violation: constraintViolations) {
-         actualErrors.add(violation.getMessage());
-         assertEquals("shortUrl", violation.getPropertyPath().toString());
-      }
-      assertEquals(expectedErrors, actualErrors);
-   }
-
-   @Test
-   public void shortUrlNoNumbers() {
+   public void shortUrlAllowsNumbers() {
       shortUrl.setShortUrl("blah123abc");
       shortUrl.setFullUrl("http://www.google.com");
       constraintViolations = validator.validate(shortUrl);
-      assertEquals(1, constraintViolations.size());
-      violation = constraintViolations.iterator().next();
-      assertEquals("Short URL must be all letters", violation.getMessage());
-      assertEquals("shortUrl", violation.getPropertyPath().toString());
+      assertEquals(0, constraintViolations.size());
    }
 
    @Test
@@ -170,7 +127,7 @@ public class ShortUrlTest {
       constraintViolations = validator.validate(shortUrl);
       assertEquals(1, constraintViolations.size());
       violation = constraintViolations.iterator().next();
-      assertEquals("Short URL must be all letters", violation.getMessage());
+      assertEquals("Short URL must be all letters and numbers", violation.getMessage());
       assertEquals("shortUrl", violation.getPropertyPath().toString());
    }
 
@@ -181,7 +138,7 @@ public class ShortUrlTest {
       constraintViolations = validator.validate(shortUrl);
       assertEquals(1, constraintViolations.size());
       violation = constraintViolations.iterator().next();
-      assertEquals("Short URL must be all letters", violation.getMessage());
+      assertEquals("Short URL must be all letters and numbers", violation.getMessage());
       assertEquals("shortUrl", violation.getPropertyPath().toString());
    }
 
