@@ -6,7 +6,7 @@
    <parent>
       <groupId>com.repaskys</groupId>
       <artifactId>url-shortener-build</artifactId>
-      <version>0.0.1</version>
+      <version>0.0.2-SNAPSHOT</version>
       <relativePath>../url-shortener-build</relativePath>
    </parent>
    <artifactId>url-shortener-web</artifactId>
