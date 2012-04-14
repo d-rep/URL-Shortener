@@ -8,6 +8,6 @@
    </head>
    <body>
       <h1>Success!</h1>
-      Your new URL has been created.  Test it out by <s:a href="%{shortUrl.shortUrl}" target="_blank"><s:url value="%{shortUrl.shortUrl}" forceAddSchemeHostAndPort="true"/></s:a>.
+      Your new URL has been created: <s:a href="%{shortUrl.shortUrl}" target="_blank"><s:url value="%{shortUrl.shortUrl}" forceAddSchemeHostAndPort="true"/></s:a>
    </body>
 </html>
