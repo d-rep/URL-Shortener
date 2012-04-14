@@ -22,7 +22,7 @@ First, download the latest and greatest source code:
 Build the code with the following commands:
 
     cd URL-Shortener/url-shortener-build
-    mvn clean package
+    mvn clean install
 
 
 Running
@@ -34,12 +34,12 @@ Alternatively, you can simply run it like this from the command line, which uses
     cd url-shortener-web
     mvn tomcat6:run
 
-Then open your browser to this address: http://localhost:8080/url-shortener-web/
+Then open your browser to this address: [http://localhost:8080/url-shortener-web/](http://localhost:8080/url-shortener-web/)
 
 
 Editing
 -------
-If you want to use Eclipse as your IDE, then simply run the following under your URL-Shortener directory:
+You don't have to use an IDE, but if you want to use Eclipse, then simply run the following under your URL-Shortener directory:
 
     cd url-shortener-domain
     mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true
@@ -48,9 +48,13 @@ If you want to use Eclipse as your IDE, then simply run the following under your
     cd url-shortener-web
     mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true -Dwtpversion=2.0
 
-Then you will be able to import the projects into Eclipse.
+Then you will be able to import the projects into Eclipse.  Click File -> Import -> General -> Existing Projects into Workspace -> Select root directory: the URL-Shortener location -> click Finish
 
-Alternatively, if you use _m2eclipse_, then you can simply click File -> Import... -> Existing Maven Projects.
+Then, in Eclipse, click Window -> Preferences -> Java -> Build Path -> Classpath Variables -> New
+Name: M2_REPO
+Path: the path to your local maven repository, such as ~/.m2/repository/
+
+Now you can go to the Servers view, and create a new Tomcat v6.0 Server.  Then you'll be able to right-click the url-shortener-web project -> Run As -> Run on Server
 
 
 Technologies
