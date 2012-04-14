@@ -51,7 +51,9 @@ You don't have to use an IDE, but if you want to use Eclipse, then simply run th
 Then you will be able to import the projects into Eclipse.  Click File -> Import -> General -> Existing Projects into Workspace -> Select root directory: the URL-Shortener location -> click Finish
 
 Then, in Eclipse, click Window -> Preferences -> Java -> Build Path -> Classpath Variables -> New
+
 Name: M2_REPO
+
 Path: the path to your local maven repository, such as ~/.m2/repository/
 
 Now you can go to the Servers view, and create a new Tomcat v6.0 Server.  Then you'll be able to right-click the url-shortener-web project -> Run As -> Run on Server

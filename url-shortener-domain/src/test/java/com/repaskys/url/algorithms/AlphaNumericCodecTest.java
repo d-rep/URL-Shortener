@@ -56,7 +56,6 @@ public class AlphaNumericCodecTest {
 		String s = alphaNumericCodec.encode(19158);
 		assertEquals("e9a", s);
 	}
-	
 
 	/**
 	 * Test that values 0-25 map to a-z.
@@ -102,7 +101,6 @@ public class AlphaNumericCodecTest {
 		}
 	}
 
-
 	@Test
 	public void testEncodeTwoUpperCaseProgression() {
 		assertEquals("ba", alphaNumericCodec.encode(62));
@@ -113,6 +111,20 @@ public class AlphaNumericCodecTest {
 		assertEquals("c9", alphaNumericCodec.encode(185));
 	}
 	
+	@Test
+	public void testBiggestPossibleInteger() {
+		assertEquals("cvuMLb", alphaNumericCodec.encode(Integer.MAX_VALUE));
+	}
+	
+	@Test
+	public void testSmallestPossibleIntegerEncodesToBlank() {
+		assertEquals("", alphaNumericCodec.encode(Integer.MIN_VALUE));
+	}
+	
+	@Test
+	public void testNegativeIntegerEncodesToBlank() {
+		assertEquals("", alphaNumericCodec.encode(-1));
+	}
 	
 	@Test
 	public void cbDecode() {
