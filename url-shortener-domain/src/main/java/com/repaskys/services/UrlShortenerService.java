@@ -26,6 +26,9 @@ import com.repaskys.domain.ShortUrl;
  * @author Drew Repasky
  */
 public interface UrlShortenerService {
+
+   ShortUrl wasUrlAlreadyShortened(String fullUrl);
+
    /**
     * Validate the ShortURL and return a list of violations.
     */

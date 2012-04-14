@@ -24,4 +24,5 @@ import com.repaskys.domain.ShortUrl;
  * @author Drew Repasky
  */
 public interface UrlRepository extends PagingAndSortingRepository<ShortUrl, Long> {
+   ShortUrl findByFullUrl(String fullUrl);
 }

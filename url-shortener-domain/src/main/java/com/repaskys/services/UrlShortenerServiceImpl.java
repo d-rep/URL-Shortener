@@ -46,7 +46,11 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
 
    @Autowired
    private Validator validator;
-   
+
+   public ShortUrl wasUrlAlreadyShortened(String fullUrl) {
+      return urlRepository.findByFullUrl(fullUrl);
+   }
+
    public List<String> validateShortUrl(ShortUrl shortUrl) {
       List<String> violations = new ArrayList<String>();
       Set<ConstraintViolation<ShortUrl>> constraintViolations = validator.validate(shortUrl);
@@ -59,14 +63,13 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
    public String saveUrl(ShortUrl shortUrl) {
       logger.trace("trying to save URL...");
       String errorMessage = "";
-      
+
       // FIXME these cryptic exception messages will be bubbled up to the user
       try {
          // insert a new record
-    	  shortUrl = urlRepository.save(shortUrl);
-         
+         shortUrl = urlRepository.save(shortUrl);
+
       } catch(DataAccessException ex) {
-         // For a non-unique short code, we'll get an error: "org.springframework.dao.DataIntegrityViolationException: Duplicate entry ..."
          logger.error("DataAccessException when saving ShortUrl", ex);
          errorMessage = ex.getMessage();
       } catch(TransactionException ex) {

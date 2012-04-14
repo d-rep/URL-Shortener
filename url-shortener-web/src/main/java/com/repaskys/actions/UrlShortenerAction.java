@@ -55,18 +55,28 @@ public class UrlShortenerAction {
       String returnCode = "ERROR";
 
       if(shortUrl != null) {
-         violations = urlShortenerService.validateShortUrl(shortUrl);
 
-         if(violations.isEmpty()) {
-            String errorMessage = urlShortenerService.saveUrl(shortUrl);
-            if(StringUtils.isBlank(errorMessage)) {
-               returnCode = "SUCCESS";
+         ShortUrl duplicateShortUrl = urlShortenerService.wasUrlAlreadyShortened(shortUrl.getFullUrl());
+
+         if(duplicateShortUrl == null) {
+            // full URL was not previously shortened, so validate and then save it
+            violations = urlShortenerService.validateShortUrl(shortUrl);
+
+            if(violations.isEmpty()) {
+               String errorMessage = urlShortenerService.saveUrl(shortUrl);
+               if(StringUtils.isBlank(errorMessage)) {
+                  returnCode = "SUCCESS";
+               } else {
+                  violations.add(errorMessage);
+                  returnCode = "ERROR";
+               }
             } else {
-               violations.add(errorMessage);
-               returnCode = "ERROR";
+               logger.debug("Did not save due to validation errors: " + violations);
             }
          } else {
-            logger.debug("Did not save due to validation errors: " + violations);
+            shortUrl = duplicateShortUrl;
+            logger.debug("URL had already been shortened: " + shortUrl);
+            returnCode = "SUCCESS";
          }
 
       } else {
