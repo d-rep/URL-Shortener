@@ -41,8 +41,8 @@ public class AlphaNumericCodec implements Codec {
 	private static final int ALPHABET_LENGTH = ALPHABET.length();
 	private static final char[] CHARSET = ALPHABET.toCharArray();
 	
-	public String encode(int i) {
-		
+	public String encode(int number) {
+		int i = number;
 		if(i == 0) {
 			return Character.toString(CHARSET[0]);
 		}

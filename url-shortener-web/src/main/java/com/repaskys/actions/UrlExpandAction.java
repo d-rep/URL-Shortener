@@ -28,7 +28,7 @@ import com.repaskys.services.UrlShortenerService;
  * @author Drew Repasky
  */
 public class UrlExpandAction implements Preparable {
-   private static final Logger logger = LoggerFactory.getLogger(UrlExpandAction.class);
+   private static final Logger LOGGER = LoggerFactory.getLogger(UrlExpandAction.class);
 
    private UrlShortenerService urlShortenerService;
    private String shortUrl;
@@ -67,7 +67,7 @@ public class UrlExpandAction implements Preparable {
    }
 
    public String execute() {
-      logger.debug("My action name (the shortened URL) is: " + shortUrl);
+      LOGGER.debug("My action name (the shortened URL) is: " + shortUrl);
       this.fullUrl = urlShortenerService.expandShortUrl(shortUrl);
       return (this.fullUrl != null && this.fullUrl.length() > 0) ? "SUCCESS" : "ERROR";
    }

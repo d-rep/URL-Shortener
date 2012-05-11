@@ -45,7 +45,8 @@ public class ShortUrl implements Serializable {
 
    private static final long serialVersionUID = 7827630535667254219L;
    
-   private static final Codec codec = new AlphaNumericCodec();
+   private static final Codec CODEC = new AlphaNumericCodec();
+   private static final int MAX_URL_LENGTH = 500;
    
    /**
     * Helper method.
@@ -60,7 +61,7 @@ public class ShortUrl implements Serializable {
    }
    
    public static Long shortCodeToId(String shortCode) {
-	   int i = codec.decode(shortCode);
+	   int i = CODEC.decode(shortCode);
 	   return new Long(i);
    }
 
@@ -69,7 +70,7 @@ public class ShortUrl implements Serializable {
    private Long id;
 
    @NotBlank(message = "Full URL {javax.validation.constraints.NotBlank.message}")
-   @Size(max = 500, message="Full URL {javax.validation.constraints.Size.message}")
+   @Size(max = MAX_URL_LENGTH, message="Full URL {javax.validation.constraints.Size.message}")
    @URL
    private String fullUrl;
 
@@ -96,7 +97,7 @@ public class ShortUrl implements Serializable {
    public String getShortUrl() {
       // FIXME precision can be lost
       int integerId = safeLongToInt(this.getId());
-      return codec.encode(integerId);
+      return CODEC.encode(integerId);
    }
 
 	@Override

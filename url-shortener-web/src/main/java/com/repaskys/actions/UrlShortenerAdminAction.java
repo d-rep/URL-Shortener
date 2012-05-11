@@ -15,7 +15,6 @@
  */
 package com.repaskys.actions;
 
-import java.lang.Iterable;
 import com.repaskys.domain.ShortUrl;
 import com.repaskys.services.UrlShortenerService;
 

@@ -30,7 +30,7 @@ import com.repaskys.services.UrlShortenerService;
  * @author Drew Repasky
  */
 public class UrlShortenerAction {
-   private static final Logger logger = LoggerFactory.getLogger(UrlShortenerAction.class);
+   private static final Logger LOGGER = LoggerFactory.getLogger(UrlShortenerAction.class);
    private UrlShortenerService urlShortenerService;
    private ShortUrl shortUrl;
    private List<String> violations = new ArrayList<String>();
@@ -71,11 +71,11 @@ public class UrlShortenerAction {
                   returnCode = "ERROR";
                }
             } else {
-               logger.debug("Did not save due to validation errors: " + violations);
+               LOGGER.debug("Did not save due to validation errors: " + violations);
             }
          } else {
             shortUrl = duplicateShortUrl;
-            logger.debug("URL had already been shortened: " + shortUrl);
+            LOGGER.debug("URL had already been shortened: " + shortUrl);
             returnCode = "SUCCESS";
          }
 

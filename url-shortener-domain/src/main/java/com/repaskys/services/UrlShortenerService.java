@@ -15,7 +15,6 @@
  */
 package com.repaskys.services;
 
-import java.lang.Iterable;
 import java.util.List;
 
 import com.repaskys.domain.ShortUrl;

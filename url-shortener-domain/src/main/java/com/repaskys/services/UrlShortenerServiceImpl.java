@@ -39,7 +39,7 @@ import com.repaskys.repositories.UrlRepository;
  */
 public class UrlShortenerServiceImpl implements UrlShortenerService {
 
-   private static final Logger logger = LoggerFactory.getLogger(UrlShortenerServiceImpl.class);
+   private static final Logger LOGGER = LoggerFactory.getLogger(UrlShortenerServiceImpl.class);
 
    @Autowired
    private UrlRepository urlRepository;
@@ -61,24 +61,24 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
    }
 
    public String saveUrl(ShortUrl shortUrl) {
-      logger.trace("trying to save URL...");
+      LOGGER.trace("trying to save URL...");
       String errorMessage = "";
 
       // FIXME these cryptic exception messages will be bubbled up to the user
       try {
          // insert a new record
-         shortUrl = urlRepository.save(shortUrl);
+         urlRepository.save(shortUrl);
 
       } catch(DataAccessException ex) {
-         logger.error("DataAccessException when saving ShortUrl", ex);
+         LOGGER.error("DataAccessException when saving ShortUrl", ex);
          errorMessage = ex.getMessage();
       } catch(TransactionException ex) {
          // when we can't connect to the database, it throws a CannotCreateTransactionException
-         logger.error("TransactionException when saving ShortUrl", ex);
+         LOGGER.error("TransactionException when saving ShortUrl", ex);
          errorMessage = ex.getMessage();
       } catch(RuntimeException ex) {
          // we need the generic catch all, so that the raw exception stack trace doesn't make it all the way back to the user
-         logger.error("RuntimeException when saving ShortUrl", ex);
+         LOGGER.error("RuntimeException when saving ShortUrl", ex);
          errorMessage = ex.getMessage();
       }
       return errorMessage;
