@@ -88,10 +88,13 @@ public class ShortUrlTest {
 
    @Test
    public void fullUrlCannotBeOnlySpaces() {
-      Set<String> expectedErrors = new HashSet<String>() {{
-         add("Full URL cannot be blank");
-         add("Expected a URL (example: http://www.google.com)");
-      }};
+		Set<String> expectedErrors = new HashSet<String>() {
+			private static final long serialVersionUID = 6480942588471789481L;
+			{
+				add("Full URL cannot be blank");
+				add("Expected a URL (example: http://www.google.com)");
+			}
+		};
 
       shortUrl.setFullUrl(" ");
 

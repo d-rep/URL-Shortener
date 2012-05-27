@@ -1,2 +1,6 @@
 *.swp
 h2db.h2.db
+.classpath
+.project
+.settings
+h2

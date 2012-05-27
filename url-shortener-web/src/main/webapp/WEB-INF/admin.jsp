@@ -8,15 +8,19 @@
    </head>
    <body>
       <h1>URL List</h1>
-      <table cellpadding="0" cellspacing="0">
+      <table>
          <thead>
-            <th>Short URL</th>
-            <th>Full URL</th>
+         	<tr>
+	            <th>Short URL</th>
+	            <th>Full URL</th>
+         	</tr>
          </thead>
          <s:iterator value="shortUrlList">
          <tbody>
-            <td><s:property value="shortUrl"/></td>
-            <td><s:property value="fullUrl"/></td>
+         	<tr>
+	            <td><s:property value="shortUrl"/></td>
+	            <td><s:property value="fullUrl"/></td>
+         	</tr>
          </tbody>
          </s:iterator>
       </table>
