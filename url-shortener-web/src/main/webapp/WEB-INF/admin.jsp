@@ -5,6 +5,7 @@
    <head>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
       <title>Add URL</title>
+      <link rel="stylesheet" type="text/css" href="static/styles.css"/>
    </head>
    <body>
       <h1>URL List</h1>

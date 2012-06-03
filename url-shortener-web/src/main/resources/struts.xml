@@ -6,6 +6,10 @@
 <struts>
    <constant name="struts.action.extension" value=""/>
    <constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory"/>
+   
+   <!-- expose static content like CSS and JS -->
+   <constant name="struts.action.excludePattern" value=".*static.*"/>
+   
    <package name="urls" namespace="/" extends="struts-default">
       <default-action-ref name="urlExpand"/>
 

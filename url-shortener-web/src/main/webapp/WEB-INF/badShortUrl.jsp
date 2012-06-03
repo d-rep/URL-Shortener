@@ -5,6 +5,7 @@
    <head>
       <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
       <title>Shortened URL Not Found</title>
+      <link rel="stylesheet" type="text/css" href="static/styles.css"/>
    </head>
    <body>
       <h1>Shortened URL Not Found</h1>
