@@ -39,29 +39,14 @@ Then open your browser to this address: [http://localhost:8080/url-shortener-web
 
 Editing
 -------
-You don't have to use an IDE, but if you want to use Eclipse, then simply run the following under your URL-Shortener directory:
+You don't have to use an IDE, but if you want to use Eclipse, then you can import the projects into Eclipse.  Click File -> Import -> Maven -> Existing Maven Projects -> Select root directory: the URL-Shortener location -> click Finish
 
-    cd url-shortener-domain
-    mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true
-
-    cd ..
-    cd url-shortener-web
-    mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true -Dwtpversion=2.0
-
-Then you will be able to import the projects into Eclipse.  Click File -> Import -> General -> Existing Projects into Workspace -> Select root directory: the URL-Shortener location -> click Finish
-
-Then, in Eclipse, click Window -> Preferences -> Java -> Build Path -> Classpath Variables -> New
-
-Name: M2_REPO
-
-Path: the path to your local maven repository, such as ~/.m2/repository/
-
-Now you can go to the Servers view, and create a new Tomcat v6.0 Server.  Then you'll be able to right-click the url-shortener-web project -> Run As -> Run on Server
+Now you can go to the Servers view, and create a new Tomcat v7.0 Server.  Then you'll be able to right-click the url-shortener-web project -> Run As -> Run on Server
 
 
 Technologies
 ------------
-This is a web application written in Java.  It illustrates how to use [Struts 2] and [Spring 3.1] frameworks.  Struts Actions and Tags handle the display logic, and Spring dependency injection is used for services and wiring things together.
+This is a web application written in Java.  It illustrates how to use [Struts 2] and [Spring 3.2] frameworks.  Struts Actions and Tags handle the display logic, and Spring dependency injection is used for services and wiring things together.
 
 It uses JPA 2.0 for data persistence, with help from the [Spring Data JPA] project.  Validation is done using [JSR 303].
 
@@ -92,9 +77,9 @@ Just edit this file -- `url-shortener-build/pom.xml` -- and change the `<scope/>
 [Java Development Kit]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 [Apache Maven]: http://maven.apache.org/download.html
 [MySQL]: http://dev.mysql.com/downloads/
-[Struts 2]: http://struts.apache.org/2.3.1.1/docs/guides.html
-[Spring 3.1]: http://static.springsource.org/spring/docs/3.1.0.RELEASE/reference/html/
+[Struts 2]: http://struts.apache.org/release/2.3.x/docs/guides.html
+[Spring 3.2]: http://docs.spring.io/spring/docs/3.2.4.RELEASE/spring-framework-reference/html/
 [Apache Tomcat]: http://tomcat.apache.org/
 [JSR 303]: http://beanvalidation.org/1.0/spec/
-[Spring Data JPA]: http://www.springsource.org/spring-data/jpa
+[Spring Data JPA]: http://docs.spring.io/spring-data/jpa/docs/1.4.1.RELEASE/reference/html/
 
