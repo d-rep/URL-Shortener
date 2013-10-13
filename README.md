@@ -29,10 +29,10 @@ Running
 -------
 The above commands will produce a WAR file in the directory `url-shortener-web/target/` that can be deployed to any recent Java application server (Servlet 2.4 or greater).
 
-Alternatively, you can simply run it like this from the command line, which uses embedded Tomcat 6.0.35:
+Alternatively, you can simply run it like this from the command line, which uses embedded Tomcat 7:
 
     cd url-shortener-web
-    mvn tomcat6:run
+    mvn tomcat7:run
 
 Then open your browser to this address: [http://localhost:8080/url-shortener-web/](http://localhost:8080/url-shortener-web/)
 

@@ -5,7 +5,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>com.repaskys</groupId>
    <artifactId>url-shortener-build</artifactId>
-   <version>0.0.2-SNAPSHOT</version>
+   <version>0.0.3-SNAPSHOT</version>
    <packaging>pom</packaging>
    <modules>
       <module>../url-shortener-domain</module>
@@ -16,9 +16,9 @@
       <buildProject>url-shortener-build</buildProject>
       <jdk.version>1.6</jdk.version>
       <!-- All the Spring modules in the final package won't have the same version (Spring Data JPA pulls in 3.0.5.RELEASE) -->
-      <spring.version>3.1.1.RELEASE</spring.version>
-      <struts.version>2.3.1.2</struts.version>
-      <hibernate.version>4.0.1.Final</hibernate.version>
+      <spring.version>3.2.4.RELEASE</spring.version>
+      <struts.version>2.3.15.2</struts.version>
+      <hibernate.version>4.2.6.Final</hibernate.version>
    </properties>
    <dependencyManagement>
       <dependencies>
@@ -51,13 +51,13 @@
          <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.6.12</version>
+            <version>1.7.3</version>
          </dependency>
          <!-- <database> dependencies -->
          <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <version>1.0.0.Final</version>
+            <version>1.0.1.Final</version>
          </dependency>
          <dependency>
             <groupId>org.hibernate</groupId>
@@ -68,37 +68,37 @@
          <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>1.0.0.GA</version>
+            <version>1.1.0.Final</version>
          </dependency>
          <!-- ideally this would be runtime scope, but the custom Hibernate validations @NotBlank and @URL are used -->
          <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>4.2.0.Final</version>
+            <version>4.3.1.Final</version>
          </dependency>
          <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>1.0.3.RELEASE</version>
+            <version>1.4.1.RELEASE</version>
          </dependency>
          <!-- bundle in a database driver -->
          <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.3.164</version>
+            <version>1.3.173</version>
             <scope>runtime</scope>
          </dependency>
          <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.18</version>
+            <version>5.1.26</version>
             <scope>runtime</scope>
          </dependency>
          <!-- </database> dependencies -->
          <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.10</version>
+            <version>4.11</version>
             <scope>test</scope>
          </dependency>
          <dependency>
@@ -115,12 +115,12 @@
          <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.6.4</version>
+            <version>1.7.5</version>
          </dependency>
          <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.6.4</version>
+            <version>1.7.5</version>
          </dependency>
          <dependency>
             <groupId>commons-lang</groupId>
@@ -135,7 +135,7 @@
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-compiler-plugin</artifactId>
-               <version>2.3.2</version>
+               <version>3.1</version>
                <configuration>
                   <source>${jdk.version}</source>
                   <target>${jdk.version}</target>
@@ -145,12 +145,12 @@
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-site-plugin</artifactId>
-               <version>3.0</version>
+               <version>3.3</version>
             </plugin>
             <plugin>
                <groupId>org.apache.tomcat.maven</groupId>
-               <artifactId>tomcat6-maven-plugin</artifactId>
-               <version>2.0-beta-1</version>
+               <artifactId>tomcat7-maven-plugin</artifactId>
+               <version>2.1</version>
             </plugin>
          </plugins>
       </pluginManagement>
@@ -160,14 +160,14 @@
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
-            <version>2.8.1</version>
+            <version>2.9.1</version>
          </plugin>
       </plugins>
    </reporting>
    <developers>
       <developer>
          <name>Drew Repasky</name>
-         <email>drew@repaskys.com</email>
+         <email>drew@repasky.us</email>
       </developer>
    </developers>
 </project>
