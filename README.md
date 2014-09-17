@@ -57,10 +57,11 @@ For testing purposes, this application needs only Maven to run.  However, for pr
 
 
 ### Database ###
-On your application server, you should create a JNDI datasource with the name `jdbc/url_test`.  By default, drivers are included for [MySQL] 5.
-You will also need to update the databasePlatform (Dialect) inside the file `url-shortener-domain/src/main/resources/spring-data.xml`.
+On your application server, you should create a JNDI datasource with the name `jdbc/url_test`.  Drivers are bundled in this application for [MySQL] 5 and [H2].
 
-Next, make sure to remove the H2 configuration file (`spring-h2-database.xml`) from this file: `url-shortener-web/src/main/webapp/WEB-INF/web.xml`
+If you want to use MySQL, then the JNDI entry is all you need. You can optionally remove the H2 configuration entry (`spring-h2-database.xml`) referenced inside this file: `url-shortener-web/src/main/webapp/WEB-INF/web.xml`.
+
+If you want to use H2, then simply edit `url-shortener-web/src/main/webapp/WEB-INF/web.xml` and change `env-prod.properties` to `env-test.properties`.
 
 ### App Server ###
 This application uses JavaEE 6 API's, but it assumes you will be deploying to a simple servlet container like [Apache Tomcat], so implementation libraries are included by default.
@@ -77,6 +78,7 @@ Just edit this file -- `url-shortener-build/pom.xml` -- and change the `<scope/>
 [Java Development Kit]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 [Apache Maven]: http://maven.apache.org/download.html
 [MySQL]: http://dev.mysql.com/downloads/
+[H2]: http://www.h2database.com/html/main.html
 [Struts 2]: http://struts.apache.org/release/2.3.x/docs/guides.html
 [Spring 3.2]: http://docs.spring.io/spring/docs/3.2.4.RELEASE/spring-framework-reference/html/
 [Apache Tomcat]: http://tomcat.apache.org/
