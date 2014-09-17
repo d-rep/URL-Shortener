@@ -29,7 +29,7 @@ Running
 -------
 The above commands will produce a WAR file in the directory `url-shortener-web/target/` that can be deployed to any recent Java application server (Servlet 2.4 or greater).
 
-Alternatively, you can simply run it like this from the command line, which uses embedded Tomcat 7:
+Alternatively, you can simply run it like this from the command line, which uses embedded Tomcat 7 as the app server and H2 as the database:
 
     cd url-shortener-web
     mvn tomcat7:run
@@ -61,7 +61,7 @@ On your application server, you should create a JNDI datasource with the name `j
 
 If you want to use MySQL, then the JNDI entry is all you need. You can optionally remove the H2 configuration entry (`spring-h2-database.xml`) referenced inside this file: `url-shortener-web/src/main/webapp/WEB-INF/web.xml`.
 
-If you want to use H2, then simply edit `url-shortener-web/src/main/webapp/WEB-INF/web.xml` and change `env-prod.properties` to `env-test.properties`.
+If you want to use a different database, then add the driver to your `pom.xml` files (in the build and domain projects) and then update `env-prod.properties` with the appropriate database dialect.
 
 ### App Server ###
 This application uses JavaEE 6 API's, but it assumes you will be deploying to a simple servlet container like [Apache Tomcat], so implementation libraries are included by default.
@@ -73,7 +73,7 @@ Just edit this file -- `url-shortener-build/pom.xml` -- and change the `<scope/>
 
 
 
-[Drew Repasky]: http://twitter.com/drewrepasky
+[Drew Repasky]: https://www.linkedin.com/in/drewrepasky
 [Apache License, Version 2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
 [Java Development Kit]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 [Apache Maven]: http://maven.apache.org/download.html
